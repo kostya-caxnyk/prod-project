@@ -1,7 +1,7 @@
 import path from "path";
 import webpack from "webpack";
-import { buildWebpackConfig } from "./config/buildWebpackConfig";
-import { BuildEnv } from "./config/types/config";
+import { buildWebpackConfig } from "./config/build/buildWebpackConfig";
+import { BuildEnv } from "./config/build/types/config";
 
 const config = (env: BuildEnv): webpack.Configuration => {
   const mode = env.mode || "development";
@@ -15,6 +15,7 @@ const config = (env: BuildEnv): webpack.Configuration => {
       entry: "./src/index.tsx",
       html: path.resolve(__dirname, "public", "index.html"),
       build: path.resolve(__dirname, "build"),
+      src: path.resolve(__dirname, "src"),
     },
     isDev,
     port,

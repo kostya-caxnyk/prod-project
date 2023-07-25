@@ -4,6 +4,7 @@ import path from "path";
 import buildLoaders from "./buildLoaders";
 import buildPlugins from "./buildPlugins";
 import { buildDevServer } from "./buildDevServer";
+import buildResolver from "./buildResolvers";
 
 export function buildWebpackConfig(
   options: BuildOptions
@@ -21,9 +22,7 @@ export function buildWebpackConfig(
     module: {
       rules: buildLoaders(options),
     },
-    resolve: {
-      extensions: [".tsx", ".ts", ".js"],
-    },
+    resolve: buildResolver(options),
     devtool: isDev ? "inline-source-map" : undefined,
     devServer: isDev ? buildDevServer(options) : undefined,
   };

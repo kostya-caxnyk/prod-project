@@ -28,5 +28,20 @@ export default (options: BuildOptions): webpack.RuleSetRule[] => {
     ],
   };
 
-  return [typescriptLoader, cssLoader];
+  const svgLoader = {
+    test: /\.svg$/i,
+    issuer: /\.[jt]sx?$/,
+    use: ["@svgr/webpack"],
+  };
+
+  const fileLoader = {
+    test: /\.(png|jpe?g|gif)$/i,
+    use: [
+      {
+        loader: "file-loader",
+      },
+    ],
+  };
+
+  return [typescriptLoader, cssLoader, svgLoader, fileLoader];
 };
