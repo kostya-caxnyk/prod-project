@@ -4,6 +4,7 @@ import { RoutePaths } from "shared/config/routeConfig/routeConfig";
 import cls from "./Navbar.module.scss";
 import { classNames } from "shared/lib/classNames/classNames";
 import { AppLink } from "shared/ui/AppLink/AppLink";
+import { ThemeSwitcher } from "widgets/ThemeSwitcher";
 
 type NavbarProps = {
   className?: string;

@@ -6,6 +6,7 @@ import { useTheme } from "app/providers/ThemeProvider";
 
 import Icon from "shared/assets/icons/cloud-moon.svg";
 import { Button } from "shared/ui/Button/Button";
+import { Theme } from "app/providers/ThemeProvider";
 
 type ThemeSwitcherProps = {
   className?: string;
@@ -19,8 +20,7 @@ export function ThemeSwitcher({ className }: ThemeSwitcherProps) {
       onClick={toggleTheme}
       className={classNames(cls.s, {}, [className])}
     >
-      <Icon width={30} height={30} />
-      Change theme
+      <Icon width={50} height={50} fill={Theme.DARK ? "white" : "dark"} />
     </Button>
   );
 }
