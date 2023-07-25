@@ -10,5 +10,5 @@ type AppLinkProps = LinkProps & {
 };
 
 export function AppLink({ className, ...props }: AppLinkProps) {
-  return <Link className={classNames(cls.link, {}, [className])} {...props} />;
+  return <Link className={classNames(cls.link, className)} {...props} />;
 }
