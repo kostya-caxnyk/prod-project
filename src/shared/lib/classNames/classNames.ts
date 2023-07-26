@@ -1,5 +1,3 @@
-type Mods = Record<string, boolean | string>;
-
 type ClassValue =
   | string
   | number
@@ -7,33 +5,31 @@ type ClassValue =
   | ClassArray
   | undefined
   | null
-  | false;
+  | false
 
-interface ClassDictionary {
-  [id: string]: any;
-}
+type ClassDictionary = Record<string, any>
 
 interface ClassArray extends Array<ClassValue> {}
 
-export function classNames(...args: ClassValue[]): string {
-  const classes: string[] = [];
+export function classNames (...args: ClassValue[]): string {
+  const classes: string[] = []
 
   for (const arg of args) {
-    if (typeof arg === "string" || typeof arg === "number") {
-      classes.push(String(arg));
+    if (typeof arg === 'string' || typeof arg === 'number') {
+      classes.push(String(arg))
     } else if (Array.isArray(arg)) {
-      const nested = classNames(...arg);
+      const nested = classNames(...arg)
       if (nested) {
-        classes.push(nested);
+        classes.push(nested)
       }
-    } else if (typeof arg === "object" && arg !== null) {
+    } else if (typeof arg === 'object' && arg !== null) {
       for (const key in arg) {
         if (arg.hasOwnProperty(key) && arg[key]) {
-          classes.push(key);
+          classes.push(key)
         }
       }
     }
   }
 
-  return classes.join(" ");
+  return classes.join(' ')
 }

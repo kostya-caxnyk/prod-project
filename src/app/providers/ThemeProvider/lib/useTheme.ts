@@ -1,20 +1,20 @@
-import { useCallback } from "react";
+import { useCallback } from 'react'
 import {
   LOCAL_STORAGE_THEME_KEY,
   Theme,
-  useThemeContext,
-} from "./ThemeContext";
+  useThemeContext
+} from './ThemeContext'
 
 const useTheme = () => {
-  const { theme, setTheme } = useThemeContext();
+  const { theme, setTheme } = useThemeContext()
 
   const toggleTheme = useCallback(() => {
-    const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT;
-    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme);
-    setTheme(newTheme);
-  }, [theme]);
+    const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+    localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
+    setTheme(newTheme)
+  }, [theme])
 
-  return { theme, toggleTheme };
-};
+  return { theme, toggleTheme }
+}
 
-export default useTheme;
+export default useTheme

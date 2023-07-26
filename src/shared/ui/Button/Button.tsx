@@ -1,18 +1,18 @@
-import React, { ButtonHTMLAttributes } from "react";
+import React, { type ButtonHTMLAttributes } from 'react'
 
-import cls from "./Button.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
+import cls from './Button.module.scss'
+import { classNames } from 'shared/lib/classNames/classNames'
 
-type Variant = "";
+type ButtonVariant = 'clear' | 'filled'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  className?: string;
-  variant?: "clear" | "filled";
-};
+  className?: string
+  variant?: ButtonVariant
+}
 
-export function Button({
+export function Button ({
   className,
-  variant = "clear",
+  variant = 'clear',
   ...props
 }: ButtonProps) {
   return (
@@ -20,5 +20,5 @@ export function Button({
       className={classNames(cls.button, {}, [className, cls[variant]])}
       {...props}
     />
-  );
+  )
 }

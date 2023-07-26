@@ -1,23 +1,24 @@
-import React from "react";
+import React, { useCallback } from 'react'
 
-import cls from "./LangSwitcher.module.scss";
-import { classNames } from "shared/lib/classNames/classNames";
-import { useTranslation } from "react-i18next";
-import { Button } from "shared/ui/Button/Button";
+import { classNames } from 'shared/lib/classNames/classNames'
+import { useTranslation } from 'react-i18next'
+import { Button } from 'shared/ui/Button/Button'
 
-type LangSwitcherProps = {
-  className?: string;
-};
+interface LangSwitcherProps {
+  className?: string
+}
 
-export function LangSwitcher({ className }: LangSwitcherProps) {
-  const { t, i18n } = useTranslation();
+export function LangSwitcher ({ className }: LangSwitcherProps) {
+  const { t, i18n } = useTranslation()
 
-  const toggle = () =>
-    i18n.changeLanguage(i18n.language === "ua" ? "en" : "ua");
+  const toggle = useCallback(async () => {
+    await i18n.changeLanguage(i18n.language === 'ua' ? 'en' : 'ua')
+  }, [])
 
   return (
+    // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <Button className={classNames(className)} onClick={toggle}>
-      {t("Language")}
+      {t('Language')}
     </Button>
-  );
+  )
 }
