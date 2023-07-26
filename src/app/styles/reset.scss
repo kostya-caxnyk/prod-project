@@ -4,19 +4,12 @@
   box-sizing: border-box;
 }
 
-ul[class],
-ol[class] {
-  padding: 0;
-}
-
 body,
 h1,
 h2,
 h3,
 h4,
 p,
-ul[class],
-ol[class],
 li,
 figure,
 figcaption,
@@ -29,13 +22,19 @@ dd {
 body {
   min-height: 100vh;
   scroll-behavior: smooth;
-  text-rendering: optimizeSpeed;
+  text-rendering: optimizespeed;
   line-height: 1.5;
 }
 
 ul[class],
 ol[class] {
+  padding: 0;
+  margin: 0;
   list-style: none;
+}
+
+a {
+  color: inherit;
 }
 
 a:not([class]) {
@@ -65,8 +64,4 @@ select {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-}
-
-a {
-  color: inherit;
 }
