@@ -29,7 +29,8 @@ module.exports = {
     "react/react-in-jsx-scope": 'off',
     "react/no-deprecated": 'off',
     "@typescript-eslint/no-unused-vars": ['warn'],
-    "@typescript-eslint/naming-convention": 'off'
+    "@typescript-eslint/naming-convention": 'off',
+    "i18next/no-literal-string": ["error", {markupOnly: true}]
   },
   globals: {
     __IS_DEV__: true

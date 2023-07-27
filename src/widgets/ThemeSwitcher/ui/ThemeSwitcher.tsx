@@ -1,7 +1,5 @@
 import React from 'react'
 
-import cls from './ThemeSwitcher.module.scss'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { useTheme, Theme } from 'app/providers/ThemeProvider'
 
 import Icon from 'shared/assets/icons/cloud-moon.svg'
@@ -17,7 +15,6 @@ export function ThemeSwitcher ({ className }: ThemeSwitcherProps) {
   return (
     <Button
       onClick={toggleTheme}
-      className={classNames(cls.s, {}, [className])}
     >
       <Icon width={50} height={50} fill={Theme.DARK ? 'white' : 'dark'} />
     </Button>
