@@ -17,11 +17,12 @@ export function Sidebar ({ className }: SidebarProps) {
 
   return (
     <div
+    data-testid='sidebar'
       className={classNames(cls.sidebar, { [cls.expanded]: isExpanded }, [
         className
       ])}
     >
-      <Button onClick={toggleSidebar}>Toggle</Button>
+      <Button data-testid='sidebar-toggle' onClick={toggleSidebar}>Toggle</Button>
       <div className={cls.switchers}>
         <ThemeSwitcher />
         <LangSwitcher />
