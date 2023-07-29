@@ -13,5 +13,6 @@ i18n
     },
     resources: { en: { translations: {} } }
   })
+  .catch(console.log)
 
 export default i18n
