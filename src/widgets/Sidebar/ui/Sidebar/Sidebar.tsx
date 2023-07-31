@@ -5,6 +5,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { Button } from 'shared/ui/Button/Button'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LangSwitcher } from 'widgets/LangSwitcher'
+import { useTranslation } from 'react-i18next'
 
 interface SidebarProps {
   className?: string
@@ -12,6 +13,7 @@ interface SidebarProps {
 
 export function Sidebar ({ className }: SidebarProps) {
   const [isExpanded, toggleExpanded] = useState(true)
+  const { t } = useTranslation()
 
   const toggleSidebar = useCallback(() => { toggleExpanded((prev) => !prev) }, [])
 
@@ -22,7 +24,7 @@ export function Sidebar ({ className }: SidebarProps) {
         className
       ])}
     >
-      {/* <Button data-testid='sidebar-toggle' onClick={toggleSidebar}>Toggle</Button> */}
+      <Button data-testid='sidebar-toggle' onClick={toggleSidebar}>{t('Toggle')}</Button>
       <div className={cls.switchers}>
         <ThemeSwitcher />
         <LangSwitcher />
