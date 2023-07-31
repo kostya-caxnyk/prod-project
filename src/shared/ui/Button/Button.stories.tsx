@@ -11,7 +11,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' }
   }
-} satisfies ComponentMeta<typeof Button>
+}
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />
 

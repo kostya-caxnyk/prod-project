@@ -10,7 +10,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' }
   }
-} satisfies ComponentMeta<typeof Navbar>
+}
 
 const Template: ComponentStory<typeof Navbar> = () => <Navbar />
 

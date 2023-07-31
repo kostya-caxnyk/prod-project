@@ -1,22 +1,21 @@
 import React from 'react'
-import { type ComponentStory } from '@storybook/react'
+import { type ComponentStory, type ComponentMeta } from '@storybook/react'
+
+import { Loader } from './Loader'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { PageError } from './PageError'
 
 export default {
-  title: 'widget/PageError',
-  component: PageError,
+  title: 'shared/Loader',
+  component: Loader,
   argTypes: {
     backgroundColor: { control: 'color' }
   }
 }
 
-const Template: ComponentStory<typeof PageError> = () => <PageError />
+const Template: ComponentStory<typeof Loader> = (args) => <Loader {...args} />
 
-export const Light = Template.bind({})
-Light.args = {}
+export const Normal = Template.bind({})
 
 export const Dark = Template.bind({})
-Dark.args = {}
 Dark.decorators = [ThemeDecorator(Theme.DARK)]

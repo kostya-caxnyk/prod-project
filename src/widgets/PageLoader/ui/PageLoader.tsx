@@ -1,11 +1,12 @@
 import React from 'react'
 
 import cls from './PageLoader.module.scss'
+import { Loader } from 'shared/ui/Loader/Loader'
 
 export function PageLoader () {
   return (
     <div className={cls.pageLoader}>
-    <div className={cls['lds-circle']}><div></div></div>
+      <Loader/>
     </div>
   )
 }

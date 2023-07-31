@@ -2,17 +2,17 @@ import React from 'react'
 import { type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { PageError } from './PageError'
+import { NotFoundPage } from './NotFoundPage'
 
 export default {
-  title: 'widget/PageError',
-  component: PageError,
+  title: 'pages/NotFoundPage',
+  component: NotFoundPage,
   argTypes: {
     backgroundColor: { control: 'color' }
   }
 }
 
-const Template: ComponentStory<typeof PageError> = () => <PageError />
+const Template: ComponentStory<typeof NotFoundPage> = () => <NotFoundPage />
 
 export const Light = Template.bind({})
 Light.args = {}

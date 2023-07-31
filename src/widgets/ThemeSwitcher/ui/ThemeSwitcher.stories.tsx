@@ -1,18 +1,18 @@
 import React from 'react'
-import { type ComponentStory } from '@storybook/react'
+import { type ComponentMeta, type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
-import { PageError } from './PageError'
+import { ThemeSwitcher } from './ThemeSwitcher'
 
 export default {
-  title: 'widget/PageError',
-  component: PageError,
+  title: 'widget/ThemeSwitcher',
+  component: ThemeSwitcher,
   argTypes: {
     backgroundColor: { control: 'color' }
   }
 }
 
-const Template: ComponentStory<typeof PageError> = () => <PageError />
+const Template: ComponentStory<typeof ThemeSwitcher> = () => <ThemeSwitcher />
 
 export const Light = Template.bind({})
 Light.args = {}

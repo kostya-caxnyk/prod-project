@@ -10,7 +10,7 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' }
   }
-} satisfies ComponentMeta<typeof Sidebar>
+}
 
 const Template: ComponentStory<typeof Sidebar> = () => <Sidebar />
 
