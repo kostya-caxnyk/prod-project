@@ -22,8 +22,8 @@ export default ({
     __IS_DEV__: JSON.stringify(isDev)
   }),
   new ReactRefreshWebpackPlugin(),
-  new webpack.HotModuleReplacementPlugin(),
-  new BundleAnalyzerPlugin({
+  isDev && new webpack.HotModuleReplacementPlugin(),
+  isDev && new BundleAnalyzerPlugin({
     openAnalyzer: false
   })
-]
+].filter(plugin => plugin)
