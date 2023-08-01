@@ -30,7 +30,8 @@ module.exports = {
     "react/no-deprecated": 'off',
     "@typescript-eslint/no-unused-vars": ['warn'],
     "@typescript-eslint/naming-convention": 'off',
-    "i18next/no-literal-string": ["error", {markupOnly: true, ignoreAttribute: ['data-testid']}]
+    "i18next/no-literal-string": ["error", {markupOnly: true, ignoreAttribute: ['data-testid', 'fill', 'stroke']}],
+    "@typescript-eslint/space-before-function-paren": 'off'
   },
   globals: {
     __IS_DEV__: true

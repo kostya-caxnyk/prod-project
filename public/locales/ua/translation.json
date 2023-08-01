@@ -1,6 +1,9 @@
 {
   "About Us": "Про нас",
-  "Main Page": "Головна сторінка",
   "Language": "Українська",
-  "Page not found": "Сторінка не знайдена"
+  "Main Page": "Головна сторінка",
+  "Page not found": "Сторінка не знайдена",
+  "Reload page": "Перезавантажити сторінку",
+  "Short language": "Ua",
+  "Something went wrong": "Щось пішло не так"
 }

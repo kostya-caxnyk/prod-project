@@ -6,9 +6,10 @@ import { Button } from 'shared/ui/Button/Button'
 
 interface LangSwitcherProps {
   className?: string
+  short?: boolean
 }
 
-export function LangSwitcher ({ className }: LangSwitcherProps) {
+export function LangSwitcher({ className, short }: LangSwitcherProps) {
   const { t, i18n } = useTranslation()
 
   const toggle = useCallback(async () => {
@@ -18,7 +19,7 @@ export function LangSwitcher ({ className }: LangSwitcherProps) {
   return (
     // eslint-disable-next-line @typescript-eslint/no-misused-promises
     <Button className={classNames(className)} onClick={toggle}>
-      {t('Language')}
+      {short ? t('Short language') : t('Language')}
     </Button>
   )
 }
