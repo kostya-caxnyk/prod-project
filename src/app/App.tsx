@@ -5,11 +5,9 @@ import { Navbar } from 'widgets/Navbar'
 import { Sidebar } from 'widgets/Sidebar'
 import { Suspense } from 'react'
 
-export function App () {
-  const { theme } = useTheme()
-
+export function App() {
   return (
-    <div className={classNames('app', {}, [theme])}>
+    <div className={classNames('app')}>
       <Suspense fallback="">
         <Navbar />
         <div className="content-page">

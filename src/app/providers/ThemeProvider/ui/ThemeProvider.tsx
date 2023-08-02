@@ -5,9 +5,15 @@ import {
   themeContext
 } from 'app/providers/ThemeProvider/lib/ThemeContext'
 
-const ThemeProvider: FC = ({ children }) => {
+interface ThemeProviderProps {
+  initialTheme?: Theme
+}
+
+const defaultTheme = localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme || Theme.LIGHT
+
+const ThemeProvider: FC<ThemeProviderProps> = ({ children, initialTheme }) => {
   const [theme, setTheme] = useState<Theme>(
-    (localStorage.getItem(LOCAL_STORAGE_THEME_KEY) as Theme) || Theme.LIGHT
+    initialTheme || defaultTheme
   )
 
   const contextValue = useMemo(() => ({ theme, setTheme }), [theme])
