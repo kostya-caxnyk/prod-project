@@ -39,8 +39,9 @@ module.exports = {
       { markupOnly: true, ignoreAttribute: ['data-testid', 'fill', 'stroke'] }
     ],
     '@typescript-eslint/space-before-function-paren': 'off',
-    'react-hooks/exhaustive-deps': 'warn',
-    'react-hooks/rules-of-hooks': 'error'
+    'react-hooks/exhaustive-deps': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'react/display-name': 'off'
   },
   globals: {
     __IS_DEV__: true

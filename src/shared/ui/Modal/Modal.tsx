@@ -1,4 +1,4 @@
-import { useEffect, type MouseEvent, type ReactNode, useCallback } from 'react'
+import { useEffect, type MouseEvent, type ReactNode, useCallback, useState } from 'react'
 import cls from './Modal.module.scss'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Portal } from '../Portal/Portal'
@@ -9,9 +9,11 @@ interface ModalProps {
   isOpen?: boolean
   onClose?: () => void
   rootElement?: Element
+  lazy?: boolean
 }
 
-export function Modal({ rootElement, children, isOpen, onClose }: ModalProps) {
+export function Modal({ rootElement, children, isOpen, onClose, lazy }: ModalProps) {
+  const [isMounted, setIsMounted] = useState(false)
   const onContentClick = (e: MouseEvent<HTMLElement>) => {
     e.stopPropagation()
   }
@@ -26,12 +28,22 @@ export function Modal({ rootElement, children, isOpen, onClose }: ModalProps) {
   )
 
   useEffect(() => {
+    if (isOpen) {
+      setIsMounted(isOpen)
+    }
+  }, [isOpen])
+
+  useEffect(() => {
     document.addEventListener('keydown', onKeyDown)
 
     return () => {
       document.removeEventListener('keydown', onKeyDown)
     }
   }, [onKeyDown])
+
+  if (lazy && !isMounted) {
+    return null
+  }
 
   return (
     <Portal element={rootElement}>

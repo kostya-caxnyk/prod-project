@@ -14,7 +14,7 @@ export function LangSwitcher({ className, short }: LangSwitcherProps) {
 
   const toggle = useCallback(async () => {
     await i18n.changeLanguage(i18n.language === 'ua' ? 'en' : 'ua')
-  }, [])
+  }, [i18n])
 
   return (
     // eslint-disable-next-line @typescript-eslint/no-misused-promises

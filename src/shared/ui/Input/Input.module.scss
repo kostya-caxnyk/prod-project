@@ -1,0 +1,14 @@
+.inputWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  border-radius: 15px;
+  padding: 0 10px;
+  flex-grow: 1;
+}
+
+.placeholder {
+  margin-right: 5px;
+}
