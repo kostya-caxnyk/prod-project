@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 
-import cls from './LoginModal.module.scss'
-import { classNames } from 'shared/lib/classNames/classNames'
 import { Modal } from 'shared/ui/Modal/Modal'
-import { LoginForm } from '../LoginForm/LoginForm'
+import { Loader } from 'shared/ui/Loader/Loader'
+import { LoginFormLazy } from '../LoginForm/LoginForm.lazy'
 
 interface LoginModalProps {
   isOpen: boolean
@@ -13,7 +12,7 @@ interface LoginModalProps {
 export function LoginModal({ isOpen, onClose }: LoginModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} lazy>
-      <LoginForm />
+      <Suspense fallback={<Loader />}>{isOpen && <LoginFormLazy />}</Suspense>
     </Modal>
   )
 }

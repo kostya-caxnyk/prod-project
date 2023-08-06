@@ -6,15 +6,21 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { Input } from 'shared/ui/Input/Input'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginActions } from 'features/AuthByUsername/model/slice/loginSlice'
+import {
+  loginActions,
+  loginReducer
+} from 'features/AuthByUsername/model/slice/loginSlice'
 import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState'
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
 
-export function LoginForm() {
+export default function LoginForm() {
   const { t } = useTranslation()
   const dispatch = useDispatch()
   const { username, password, error, isLoading } = useSelector(getLoginState)
+
+  useDynamicModuleLoader('loginForm', loginReducer)
 
   const onChangeUsername = useCallback(
     (username: string) => {
