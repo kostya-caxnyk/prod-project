@@ -41,7 +41,8 @@ module.exports = {
     '@typescript-eslint/space-before-function-paren': 'off',
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
-    'react/display-name': 'off'
+    'react/display-name': 'off',
+    'multiline-ternary': 'off'
   },
   globals: {
     __IS_DEV__: true

@@ -1,9 +1,13 @@
 {
   "About Us": "Про нас",
+  "Enter password": "Введіть пароль",
+  "Enter username": "Введіть імя",
   "Language": "Українська",
   "Main Page": "Головна сторінка",
   "Page not found": "Сторінка не знайдена",
   "Reload page": "Перезавантажити сторінку",
   "Short language": "Ua",
-  "Something went wrong": "Щось пішло не так"
+  "Sign in": "Вхід",
+  "Something went wrong": "Щось пішло не так",
+  "Username or password are not correct": "Імя або пароль не правильні"
 }
