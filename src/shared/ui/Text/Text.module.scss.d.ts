@@ -1,6 +1,7 @@
 declare namespace TextModuleScssNamespace {
   export interface ITextModuleScss {
     error: string
+    primary: string
     text: string
     title: string
   }
