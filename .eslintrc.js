@@ -42,7 +42,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'react-hooks/rules-of-hooks': 'error',
     'react/display-name': 'off',
-    'multiline-ternary': 'off'
+    'multiline-ternary': 'off',
+    '@typescript-eslint/consistent-type-assertions': 'off'
   },
   globals: {
     __IS_DEV__: true
