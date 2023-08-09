@@ -2,7 +2,6 @@ declare namespace SidebarModuleScssNamespace {
   export interface ISidebarModuleScss {
     expandBtn: string
     expanded: string
-    link: string
     links: string
     sidebar: string
     switchers: string

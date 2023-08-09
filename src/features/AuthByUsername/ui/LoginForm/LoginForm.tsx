@@ -5,7 +5,7 @@ import cls from './LoginForm.module.scss'
 import { classNames } from 'shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { Input } from 'shared/ui/Input/Input'
-import { useDispatch, useSelector } from 'react-redux'
+import { useSelector } from 'react-redux'
 import {
   loginActions,
   loginReducer
@@ -14,10 +14,11 @@ import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginS
 import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
-export default function LoginForm() {
+export default function LoginForm({ onSuccess }: { onSuccess: () => void }) {
   const { t } = useTranslation()
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { username, password, error, isLoading } = useSelector(getLoginState)
 
   useDynamicModuleLoader('loginForm', loginReducer)
@@ -36,9 +37,12 @@ export default function LoginForm() {
     [dispatch]
   )
 
-  const signIn = useCallback(() => {
-    dispatch(loginByUsername({ username, password }))
-  }, [dispatch, password, username])
+  const signIn = useCallback(async () => {
+    const res = await dispatch(loginByUsername({ username, password }))
+    if (res.meta.requestStatus === 'fulfilled') {
+      onSuccess()
+    }
+  }, [dispatch, onSuccess, password, username])
 
   return (
     <div className={classNames(cls.loginForm)}>

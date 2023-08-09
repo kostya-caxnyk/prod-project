@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
-function MainPage () {
+function MainPage() {
   const { t } = useTranslation()
 
   return <div>{t('Main Page')}</div>
 }
 
-export default MainPage
+export default memo(MainPage)

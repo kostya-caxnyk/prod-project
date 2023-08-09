@@ -5,7 +5,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 
 export enum TextTheme {
   PRIMARY = 'primary',
-  ERROR = 'error',
+  ERROR = 'error'
 }
 
 interface TextProps {
@@ -15,11 +15,13 @@ interface TextProps {
   theme?: TextTheme
 }
 
-export const Text = ({ className, text, title, theme = TextTheme.PRIMARY }: TextProps) => {
-  return (
-    <div className={classNames(cls.text, className, cls[theme])}>
+export const Text = memo(
+  ({ className, text, title, theme = TextTheme.PRIMARY }: TextProps) => {
+    return (
+      <div className={classNames(cls.text, className, cls[theme])}>
         {title && <p className={cls.title}>{title}</p>}
         {text && <p className={cls.text}>{text}</p>}
-    </div>
-  )
-}
+      </div>
+    )
+  }
+)

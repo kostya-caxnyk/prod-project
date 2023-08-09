@@ -43,7 +43,8 @@ module.exports = {
     'react-hooks/rules-of-hooks': 'error',
     'react/display-name': 'off',
     'multiline-ternary': 'off',
-    '@typescript-eslint/consistent-type-assertions': 'off'
+    '@typescript-eslint/consistent-type-assertions': 'off',
+    '@typescript-eslint/no-misused-promises': 'off'
   },
   globals: {
     __IS_DEV__: true

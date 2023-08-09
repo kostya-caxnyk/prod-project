@@ -1,6 +1,15 @@
 {
   "posts": [{ "id": "1", "title": "json-server", "author": "typicode" }],
   "comments": [{ "id": "1", "body": "some comment", "postId": "1" }],
-  "profile": { "name": "typicode" },
+  "profile": {
+    "first": "Kostya",
+    "lastname": "Sakhnyuk",
+    "age": 21,
+    "currency": "UAH",
+    "country": "Ukraine",
+    "city": "Vinnitsya",
+    "username": "admin 228",
+    "avatar": "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.meme-arsenal.com%2Fen%2Fcreate%2Ftemplate%2F1514760&psig=AOvVaw24x8TbmV2wz3Iw_r834nlr&ust=1691679596865000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCOCszN7rz4ADFQAAAAAdAAAAABAE"
+  },
   "users": [{ "id": "1", "username": "kostya", "password": "123123" }]
 }

@@ -12,7 +12,9 @@ interface LoginModalProps {
 export function LoginModal({ isOpen, onClose }: LoginModalProps) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} lazy>
-      <Suspense fallback={<Loader />}>{isOpen && <LoginFormLazy />}</Suspense>
+      <Suspense fallback={<Loader />}>
+        {isOpen && <LoginFormLazy onSuccess={onClose} />}
+      </Suspense>
     </Modal>
   )
 }

@@ -13,7 +13,7 @@ export default {
   }
 }
 
-const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm />
+const Template: ComponentStory<typeof LoginForm> = (args) => <LoginForm {...args}/>
 
 export const Normal = Template.bind({})
 Normal.decorators = [StoreDecorator({
