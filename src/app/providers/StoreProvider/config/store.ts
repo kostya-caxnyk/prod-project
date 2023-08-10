@@ -1,7 +1,9 @@
-import { type ReducersMapObject, configureStore, type DeepPartial } from '@reduxjs/toolkit'
-import { type StateSchema } from './StateSchema'
+import { type ReducersMapObject, configureStore } from '@reduxjs/toolkit'
+import { type ThunkExtraArg, type StateSchema } from './StateSchema'
 import { userReducer } from 'entities/User'
 import { createReducerManager } from './reducerManager'
+import { api } from 'shared/api/api'
+import { type Reducer, type CombinedState } from 'redux'
 
 export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
   const rootReducer: ReducersMapObject<StateSchema> = {
@@ -11,10 +13,20 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
 
   const reducerManager = createReducerManager(rootReducer)
 
-  const store = configureStore<StateSchema>({
-    reducer: reducerManager.reduce,
+  const extraArg: ThunkExtraArg = {
+    api
+  }
+
+  const store = configureStore({
+    reducer: reducerManager.reduce as Reducer<CombinedState<StateSchema>>,
     devTools: __IS_DEV__,
-    preloadedState: initialState
+    preloadedState: initialState,
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        thunk: {
+          extraArgument: extraArg
+        }
+      })
   })
 
   // @ts-expect-error no such field

@@ -19,7 +19,8 @@ export const Normal = Template.bind({})
 Normal.decorators = [StoreDecorator({
   loginForm: {
     username: 'kostya',
-    password: '123'
+    password: '123',
+    isLoading: false
   }
 })]
 

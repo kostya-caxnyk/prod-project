@@ -7,10 +7,10 @@ const useTheme = () => {
   const toggleTheme = useCallback(() => {
     const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
-    setTheme(newTheme)
+    setTheme?.(newTheme)
   }, [setTheme, theme])
 
-  document.body.className = theme
+  document.body.className = theme || ''
 
   return { theme, toggleTheme }
 }

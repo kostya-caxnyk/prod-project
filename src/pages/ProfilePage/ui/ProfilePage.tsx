@@ -1,15 +1,25 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { classNames } from 'shared/lib/classNames/classNames'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
-import { profileReducer } from 'entities/Profile'
+import { fetchProfileData, profileReducer, ProfileCard } from 'entities/Profile'
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 const ProfilePage = () => {
-  const { t } = useTranslation()
   useDynamicModuleLoader('profile', profileReducer)
 
-  return <div>{t('Profile page')}</div>
+  const { t } = useTranslation()
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(fetchProfileData()).then(console.log).catch(console.log)
+  }, [dispatch])
+
+  return (
+    <div>
+      <ProfileCard />
+    </div>
+  )
 }
 
 export default memo(ProfilePage)

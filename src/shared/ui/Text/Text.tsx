@@ -11,7 +11,7 @@ export enum TextTheme {
 interface TextProps {
   className?: string
   title?: string
-  text: ReactNode
+  text?: ReactNode
   theme?: TextTheme
 }
 

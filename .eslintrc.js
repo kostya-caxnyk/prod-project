@@ -44,10 +44,12 @@ module.exports = {
     'react/display-name': 'off',
     'multiline-ternary': 'off',
     '@typescript-eslint/consistent-type-assertions': 'off',
-    '@typescript-eslint/no-misused-promises': 'off'
+    '@typescript-eslint/no-misused-promises': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off'
   },
   globals: {
-    __IS_DEV__: true
+    __IS_DEV__: true,
+    __API__: true
   },
   overrides: [
     {

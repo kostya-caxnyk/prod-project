@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs')
 const jsonServer = require('json-server')
 const path = require('path')
@@ -12,8 +11,8 @@ server.use(jsonServer.bodyParser)
 
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального апи
 server.use(async (req, res, next) => {
-  await new Promise((resolve) => {
-    setTimeout(resolve, 800)
+  await new Promise((res) => {
+    setTimeout(res, 800)
   })
   next()
 })

@@ -11,7 +11,7 @@ interface InputProps
 
 export const Input = memo(
   ({ value, onChange, type = 'text', placeholder, autoFocus, ...props }: InputProps) => {
-    const inputRef = useRef<HTMLInputElement>()
+    const inputRef = useRef<HTMLInputElement>(null)
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       onChange?.(e.target.value)
     }

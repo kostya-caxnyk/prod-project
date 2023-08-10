@@ -6,6 +6,7 @@ import { type BuildEnv } from './config/build/types/config'
 const config = (env: BuildEnv): webpack.Configuration => {
   const mode = env.mode || 'development'
   const port = env.port || 3000
+  const apiUrl = env.apiUrl || 'http://localhost:8000/'
 
   const isDev = mode === 'development'
 
@@ -18,7 +19,8 @@ const config = (env: BuildEnv): webpack.Configuration => {
       src: path.resolve(__dirname, 'src')
     },
     isDev,
-    port
+    port,
+    apiUrl
   })
 }
 
