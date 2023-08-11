@@ -7,6 +7,7 @@ declare namespace ButtonModuleScssNamespace {
     clearInverted: string
     disabled: string
     outline: string
+    outline_red: string
     size_l: string
     size_m: string
     size_xl: string

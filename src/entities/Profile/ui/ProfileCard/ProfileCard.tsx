@@ -1,31 +1,93 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cls from './ProfileCard.module.scss'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { useSelector } from 'react-redux'
-import { getProfileData } from 'entities/Profile/model/selectors/getProfileData/getProfileData'
-import { Text } from 'shared/ui/Text/Text'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
+import { Profile } from 'entities/Profile'
+import { Loader } from 'shared/ui/Loader/Loader'
 
-export const ProfileCard = memo(() => {
-  const { t } = useTranslation('profile')
+interface ProfileCardProps {
+  data?: Profile
+  error?: string
+  isLoading?: boolean
+  readonly?: boolean
+  onChange: (newData: Profile) => void
+}
 
-  const profileData = useSelector(getProfileData)
-  const hasError = useSelector(getProfileData)
-  const isLoading = useSelector(getProfileData)
+export const ProfileCard = memo(
+  ({ data, error, isLoading, readonly, onChange }: ProfileCardProps) => {
+    const { t } = useTranslation('profile')
 
-  return (
-    <div className={classNames(cls.profileCard)}>
-      <div className={cls.header}>
-        <Text title={t('User profile')} />
-        <Button theme={ButtonTheme.OUTLINE}>{t('Edit')}</Button>
+    const changeField = useCallback(
+      (value: string, field: keyof Profile) => {
+        onChange({ ...data, [field]: value })
+      },
+      [data, onChange]
+    )
+
+    if (isLoading) {
+      return (
+        <div className={cls.profileCard}>
+          <Loader />
+        </div>
+      )
+    }
+
+    if (error) {
+      return (
+        <div className={cls.profileCard}>
+          <Text
+            text={t('Try to reload page')}
+            title={t('Something went wrong')}
+            theme={TextTheme.ERROR}
+            align={TextAlign.CENTER}
+          />
+        </div>
+      )
+    }
+
+    return (
+      <div className={cls.profileCard}>
+        <div className={cls.profile}>
+          <Input
+            value={data?.first}
+            placeholder={t('Your name')}
+            readOnly={readonly}
+            onChange={changeField}
+            name="first"
+          />
+          <Input
+            value={data?.lastname}
+            placeholder={t('Your lastname')}
+            readOnly={readonly}
+            onChange={changeField}
+            name="lastname"
+          />
+          <Input
+            value={data?.age}
+            placeholder={t('Your age')}
+            readOnly={readonly}
+            onChange={changeField}
+            name="age"
+            type="number"
+          />
+          <Input
+            value={data?.country}
+            placeholder={t('Your country')}
+            readOnly={readonly}
+            onChange={changeField}
+            name="country"
+          />
+          <Input
+            value={data?.city}
+            placeholder={t('Your city')}
+            readOnly={readonly}
+            onChange={changeField}
+            name="city"
+          />
+        </div>
       </div>
-      <div className={cls.profile}>
-        <Input value={profileData?.first} placeholder={t('Your name')} />
-        <Input value={profileData?.lastname} placeholder={t('Your lastname')} />
-      </div>
-    </div>
-  )
-})
+    )
+  }
+)

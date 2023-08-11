@@ -36,7 +36,10 @@ module.exports = {
     '@typescript-eslint/naming-convention': 'off',
     'i18next/no-literal-string': [
       'error',
-      { markupOnly: true, ignoreAttribute: ['data-testid', 'fill', 'stroke'] }
+      {
+        markupOnly: true,
+        ignoreAttribute: ['data-testid', 'fill', 'stroke', 'name']
+      }
     ],
     '@typescript-eslint/space-before-function-paren': 'off',
     'react-hooks/exhaustive-deps': 'error',
@@ -45,7 +48,8 @@ module.exports = {
     'multiline-ternary': 'off',
     '@typescript-eslint/consistent-type-assertions': 'off',
     '@typescript-eslint/no-misused-promises': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off'
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/consistent-type-imports': 'off'
   },
   globals: {
     __IS_DEV__: true,

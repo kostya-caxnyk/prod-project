@@ -3,17 +3,18 @@ import React, { type InputHTMLAttributes, memo, type ChangeEvent, useEffect, use
 import cls from './Input.module.scss'
 import { classNames } from 'shared/lib/classNames/classNames'
 
-interface InputProps
-  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'> {
-  value?: string
-  onChange?: (newValue: string) => void
+interface InputProps<Name>
+  extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'name'> {
+  value?: string | number
+  onChange?: (newValue: string, name: Name) => void
+  name?: Name
 }
 
-export const Input = memo(
-  ({ value, onChange, type = 'text', placeholder, autoFocus, ...props }: InputProps) => {
+const InputComponent =
+  <Name extends string,>({ value, onChange, type = 'text', placeholder, autoFocus, name, ...props }: InputProps<Name>) => {
     const inputRef = useRef<HTMLInputElement>(null)
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-      onChange?.(e.target.value)
+      onChange?.(e.target.value, (name || '') as Name)
     }
 
     useEffect(() => {
@@ -38,4 +39,5 @@ export const Input = memo(
       </div>
     )
   }
-)
+
+export const Input = memo(InputComponent) as typeof InputComponent

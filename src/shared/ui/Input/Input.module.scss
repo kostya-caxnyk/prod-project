@@ -7,6 +7,10 @@
   border-radius: 15px;
   padding: 0 10px;
   flex-grow: 1;
+  background-color: var(--bg-color);
+  color: var(--inverted-bg-color);
+  outline: none;
+  border: none;
 }
 
 .placeholder {

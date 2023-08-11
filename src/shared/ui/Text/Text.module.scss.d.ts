@@ -1,5 +1,8 @@
 declare namespace TextModuleScssNamespace {
   export interface ITextModuleScss {
+    alignCenter: string
+    alignLeft: string
+    alignRight: string
     error: string
     primary: string
     text: string

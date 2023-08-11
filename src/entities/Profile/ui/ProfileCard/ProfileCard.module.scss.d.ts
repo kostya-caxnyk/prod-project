@@ -1,6 +1,6 @@
 declare namespace ProfileCardModuleScssNamespace {
   export interface IProfileCardModuleScss {
-    header: string
+    loader: string
     profile: string
     profileCard: string
   }
