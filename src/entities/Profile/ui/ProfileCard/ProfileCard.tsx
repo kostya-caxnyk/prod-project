@@ -6,6 +6,10 @@ import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text'
 import { Input } from 'shared/ui/Input/Input'
 import { Profile } from 'entities/Profile'
 import { Loader } from 'shared/ui/Loader/Loader'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { Select } from 'shared/ui/Select/Select'
+import { Country, CountrySelect } from 'entities/Country'
+import { Currency, CurrencySelect } from 'entities/Currency'
 
 interface ProfileCardProps {
   data?: Profile
@@ -22,6 +26,20 @@ export const ProfileCard = memo(
     const changeField = useCallback(
       (value: string, field: keyof Profile) => {
         onChange({ ...data, [field]: value })
+      },
+      [data, onChange]
+    )
+
+    const changeCountry = useCallback(
+      (value: Country) => {
+        onChange({ ...data, country: value })
+      },
+      [data, onChange]
+    )
+
+    const changeCurrency = useCallback(
+      (value: Currency) => {
+        onChange({ ...data, currency: value })
       },
       [data, onChange]
     )
@@ -50,6 +68,11 @@ export const ProfileCard = memo(
     return (
       <div className={cls.profileCard}>
         <div className={cls.profile}>
+          {data?.avatar && (
+            <div className={cls.avatar}>
+              <Avatar src={data?.avatar} size={150} />
+            </div>
+          )}
           <Input
             value={data?.first}
             placeholder={t('Your name')}
@@ -73,11 +96,11 @@ export const ProfileCard = memo(
             type="number"
           />
           <Input
-            value={data?.country}
-            placeholder={t('Your country')}
+            value={data?.city}
+            placeholder={t('Your city')}
             readOnly={readonly}
             onChange={changeField}
-            name="country"
+            name="city"
           />
           <Input
             value={data?.city}
@@ -85,6 +108,30 @@ export const ProfileCard = memo(
             readOnly={readonly}
             onChange={changeField}
             name="city"
+          />
+          <Input
+            value={data?.username}
+            placeholder={t('Your username')}
+            readOnly={readonly}
+            onChange={changeField}
+            name="username"
+          />
+          <Input
+            value={data?.avatar}
+            placeholder={t('Your avatar')}
+            readOnly={readonly}
+            onChange={changeField}
+            name="avatar"
+          />
+          <CountrySelect
+            value={data?.country}
+            readonly={readonly}
+            onChange={changeCountry}
+          />
+          <CurrencySelect
+            value={data?.currency}
+            readonly={readonly}
+            onChange={changeCurrency}
           />
         </div>
       </div>
