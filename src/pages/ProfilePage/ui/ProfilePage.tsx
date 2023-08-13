@@ -10,21 +10,27 @@ import {
   getProfileLoading,
   Profile,
   profileActions,
-  getProfileReadonly
+  getProfileReadonly,
+  getProfileValidationErrors,
+  ValidationProfileError
 } from 'entities/Profile'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
+import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { useTranslation } from 'react-i18next'
 
 const ProfilePage = () => {
   useDynamicModuleLoader('profile', profileReducer)
 
+  const { t } = useTranslation('profile')
   const dispatch = useAppDispatch()
 
   const readonly = useSelector(getProfileReadonly)
   const profileData = useSelector(getProfileData)
   const error = useSelector(getProfileError)
   const isLoading = useSelector(getProfileLoading)
+  const validationErrors = useSelector(getProfileValidationErrors)
 
   useEffect(() => {
     dispatch(fetchProfileData()).then(console.log).catch(console.log)
@@ -32,14 +38,31 @@ const ProfilePage = () => {
 
   const updateProfile = useCallback(
     (newData: Profile) => {
-      dispatch(profileActions.updateProfile(newData))
+      if (__PROJECT__ !== 'storybook') {
+        dispatch(profileActions.updateProfile(newData))
+      }
     },
     [dispatch]
   )
 
+  const validationErrorTranslates = {
+    [ValidationProfileError.SERVER_ERROR]: t('Server error'),
+    [ValidationProfileError.NO_DATA]: t('No profile data'),
+    [ValidationProfileError.INCORRECT_AGE]: t('Incorrect age'),
+    [ValidationProfileError.INCORRECT_COUNTRY]: t('Incorrect country'),
+    [ValidationProfileError.INCORRECT_USER_DATA]: t('No firstname or lastname')
+  }
+
   return (
     <div className={cls.profilePage}>
       <ProfilePageHeader />
+      {validationErrors?.map((error) => (
+        <Text
+          text={validationErrorTranslates[error]}
+          key={error}
+          theme={TextTheme.ERROR}
+        />
+      ))}
       <ProfileCard
         data={profileData}
         error={error}

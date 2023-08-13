@@ -9,7 +9,10 @@ interface LoaderProps {
 
 export const Loader = memo(({ className }: LoaderProps) => {
   return (
-    <div className={classNames(cls['lds-circle'], className)}>
+    <div className={classNames(cls['lds-ellipsis'], className)}>
+      <div></div>
+      <div></div>
+      <div></div>
       <div></div>
     </div>
   )

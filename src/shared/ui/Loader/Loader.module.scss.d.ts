@@ -1,6 +1,9 @@
 declare namespace LoaderModuleScssNamespace {
   export interface ILoaderModuleScss {
-    'lds-circle': string
+    'lds-ellipsis': string
+    'lds-ellipsis1': string
+    'lds-ellipsis2': string
+    'lds-ellipsis3': string
   }
 }
 

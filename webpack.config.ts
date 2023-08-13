@@ -20,7 +20,8 @@ const config = (env: BuildEnv): webpack.Configuration => {
     },
     isDev,
     port,
-    apiUrl
+    apiUrl,
+    project: 'frontend'
   })
 }
 

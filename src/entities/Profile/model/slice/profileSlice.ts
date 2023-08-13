@@ -33,14 +33,15 @@ export const profileSlice = createSlice({
       state.isLoading = false
       state.data = action.payload
     }).addCase(saveProfileData.pending, (state) => {
-      state.error = undefined
+      state.validationError = undefined
       state.isLoading = true
     }).addCase(saveProfileData.rejected, (state, action) => {
-      state.error = action.payload
+      state.validationError = action.payload
       state.isLoading = false
     }).addCase(saveProfileData.fulfilled, (state) => {
-      state.error = undefined
+      state.validationError = undefined
       state.isLoading = false
+      state.readonly = true
     })
   }
 })

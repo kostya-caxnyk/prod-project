@@ -22,9 +22,8 @@ export const ProfilePageHeader = memo(() => {
   }, [dispatch, readonly])
 
   const saveProfile = useCallback(() => {
-    changeReadonly()
     dispatch(saveProfileData()).catch(console.log)
-  }, [changeReadonly, dispatch])
+  }, [dispatch])
 
   return (
     <div className={cls.header}>

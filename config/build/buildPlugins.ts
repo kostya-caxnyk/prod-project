@@ -9,7 +9,8 @@ import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 export default ({
   paths,
   isDev,
-  apiUrl
+  apiUrl,
+  project
 }: BuildOptions): webpack.WebpackPluginInstance[] => [
   new HtmlWebpackPlugin({
     template: paths.html
@@ -21,7 +22,8 @@ export default ({
   }),
   new webpack.DefinePlugin({
     __IS_DEV__: JSON.stringify(isDev),
-    __API__: JSON.stringify(apiUrl)
+    __API__: JSON.stringify(apiUrl),
+    __PROJECT__: JSON.stringify(project)
   }),
   new ReactRefreshWebpackPlugin(),
   isDev && new webpack.HotModuleReplacementPlugin(),

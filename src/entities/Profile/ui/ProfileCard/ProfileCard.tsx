@@ -7,9 +7,9 @@ import { Input } from 'shared/ui/Input/Input'
 import { Profile } from 'entities/Profile'
 import { Loader } from 'shared/ui/Loader/Loader'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
-import { Select } from 'shared/ui/Select/Select'
 import { Country, CountrySelect } from 'entities/Country'
 import { Currency, CurrencySelect } from 'entities/Currency'
+import { classNames } from 'shared/lib/classNames/classNames'
 
 interface ProfileCardProps {
   data?: Profile
@@ -47,14 +47,16 @@ export const ProfileCard = memo(
     if (isLoading) {
       return (
         <div className={cls.profileCard}>
-          <Loader />
+          <div className={cls.loader}>
+            <Loader />
+          </div>
         </div>
       )
     }
 
     if (error) {
       return (
-        <div className={cls.profileCard}>
+        <div className={classNames(cls.profileCard, cls.loader)}>
           <Text
             text={t('Try to reload page')}
             title={t('Something went wrong')}
@@ -94,13 +96,6 @@ export const ProfileCard = memo(
             onChange={changeField}
             name="age"
             type="number"
-          />
-          <Input
-            value={data?.city}
-            placeholder={t('Your city')}
-            readOnly={readonly}
-            onChange={changeField}
-            name="city"
           />
           <Input
             value={data?.city}
