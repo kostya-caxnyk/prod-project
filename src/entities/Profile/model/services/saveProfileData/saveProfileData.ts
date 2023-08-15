@@ -1,5 +1,4 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { api } from 'shared/api/api'
 import { ValidationProfileError, type Profile } from '../../types/profile'
 import { ThunkConfig } from 'app/providers/StoreProvider'
 import { getProfileData } from '../../selectors/getProfileData/getProfileData'
@@ -21,7 +20,12 @@ ThunkConfig<ValidationProfileError[]>
       return ThunkApi.rejectWithValue(validationErrors)
     }
 
-    const response = await api.put<Profile>('/profile', profile)
+    const response = await ThunkApi.extra.api.put<Profile>('/profile', profile)
+
+    if (!response.data) {
+      throw new Error()
+    }
+
     return response.data
   } catch (e) {
     console.log(e)
