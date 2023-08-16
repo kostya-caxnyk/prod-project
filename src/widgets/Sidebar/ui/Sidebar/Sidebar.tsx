@@ -15,7 +15,6 @@ interface SidebarProps {
 
 export function Sidebar({ className }: SidebarProps) {
   const [isExpanded, toggleExpanded] = useState(true)
-  const { t } = useTranslation()
 
   const toggleSidebar = useCallback(() => {
     toggleExpanded((prev) => !prev)

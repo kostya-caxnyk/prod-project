@@ -8,6 +8,7 @@ export interface SidebarLinkType {
   icon: React.FunctionComponent<React.SVGAttributes<SVGElement>>
   text: string
   path: string
+  authOnly?: boolean
 }
 
 export const sidebarLinks: SidebarLinkType[] = [
@@ -24,6 +25,7 @@ export const sidebarLinks: SidebarLinkType[] = [
   {
     path: RoutePaths.profile,
     icon: ProfileIcon,
-    text: i18n.t('Profile')
+    text: i18n.t('Profile'),
+    authOnly: true
   }
 ]
