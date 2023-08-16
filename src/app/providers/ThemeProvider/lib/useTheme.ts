@@ -5,7 +5,20 @@ const useTheme = () => {
   const { theme, setTheme } = useThemeContext()
 
   const toggleTheme = useCallback(() => {
-    const newTheme = theme === Theme.LIGHT ? Theme.DARK : Theme.LIGHT
+    let newTheme: Theme
+    switch (theme) {
+      case Theme.DARK:
+        newTheme = Theme.LIGHT
+        break
+      case Theme.LIGHT:
+        newTheme = Theme.ORANGE
+        break
+      case Theme.ORANGE:
+        newTheme = Theme.DARK
+        break
+      default:
+        newTheme = Theme.DARK
+    }
     localStorage.setItem(LOCAL_STORAGE_THEME_KEY, newTheme)
     setTheme?.(newTheme)
   }, [setTheme, theme])
