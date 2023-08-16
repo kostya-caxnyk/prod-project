@@ -1,6 +1,7 @@
 import { RoutePaths } from 'shared/config/routeConfig/routeConfig'
 import AboutIcon from 'shared/assets/icons/about.svg'
 import ProfileIcon from 'shared/assets/icons/profile.svg'
+import ArticlesIcon from 'shared/assets/icons/articles.svg'
 import HomeIcon from 'shared/assets/icons/home.svg'
 import i18n from 'shared/config/i18n/i18n'
 
@@ -26,6 +27,12 @@ export const sidebarLinks: SidebarLinkType[] = [
     path: RoutePaths.profile,
     icon: ProfileIcon,
     text: i18n.t('Profile'),
+    authOnly: true
+  },
+  {
+    path: RoutePaths.articles,
+    icon: ArticlesIcon,
+    text: i18n.t('Articles'),
     authOnly: true
   }
 ]
