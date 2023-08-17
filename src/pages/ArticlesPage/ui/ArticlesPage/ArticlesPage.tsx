@@ -4,12 +4,10 @@ import { useTranslation } from 'react-i18next'
 import cls from './ArticlesPage.module.scss'
 import { classNames } from 'shared/lib/classNames/classNames'
 
-interface ArticlesPageProps {}
-
-const ArticlesPage = memo(({}: ArticlesPageProps) => {
+const ArticlesPage = memo(() => {
   const { t } = useTranslation()
 
-  return <div className={classNames(cls.ArticlesPage)}>articles page</div>
+  return <div className={classNames(cls.ArticlesPage)}></div>
 })
 
 export default ArticlesPage

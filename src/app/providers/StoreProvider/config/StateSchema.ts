@@ -4,6 +4,7 @@ import { type LoginSchema } from 'features/AuthByUsername'
 import { type ReducerManager } from './reducerManager'
 import { type ProfileSchema } from 'entities/Profile'
 import { type AxiosInstance } from 'axios'
+import { ArticleDetailsSchema } from 'entities/Article'
 
 export interface StateSchema {
   user: UserSchema
@@ -11,6 +12,7 @@ export interface StateSchema {
   // lazy reducers
   loginForm?: LoginSchema
   profile?: ProfileSchema
+  articleDetails?: ArticleDetailsSchema
 }
 
 export type StateSchemaKey = keyof StateSchema

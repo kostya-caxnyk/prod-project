@@ -6,19 +6,18 @@ import {
   ArticleBlockType,
   ArticleType
 } from 'entities/Article/model/types/article'
-import ArticleDetailsPage from './ArticleDetailsPage'
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
+import { ArticleDetails } from './ArticleDetails'
 
 export default {
-  title: 'pages/ArticleDetailsPage',
-  component: ArticleDetailsPage,
+  title: 'entities/ArticleDetails',
+  component: ArticleDetails,
   argTypes: {
     backgroundColor: { control: 'color' }
   }
 }
 
-const Template: ComponentStory<typeof ArticleDetailsPage> = (args) => (
-  <ArticleDetailsPage />
+const Template: ComponentStory<typeof ArticleDetails> = (args) => (
+  <ArticleDetails {...args} />
 )
 
 const article: Article = {
@@ -58,11 +57,16 @@ const article: Article = {
 }
 
 export const Normal = Template.bind({})
-Normal.args = {}
-Normal.decorators = [
-  StoreDecorator({
-    articleDetails: {
-      data: article
-    }
-  })
-]
+Normal.args = {
+  article
+}
+
+export const Loading = Template.bind({})
+Loading.args = {
+  isLoading: true
+}
+
+export const Error = Template.bind({})
+Error.args = {
+  error: 'error'
+}

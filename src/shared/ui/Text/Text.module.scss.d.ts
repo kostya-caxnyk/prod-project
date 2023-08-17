@@ -5,6 +5,8 @@ declare namespace TextModuleScssNamespace {
     alignRight: string
     error: string
     primary: string
+    size_l: string
+    size_m: string
     text: string
     title: string
   }
