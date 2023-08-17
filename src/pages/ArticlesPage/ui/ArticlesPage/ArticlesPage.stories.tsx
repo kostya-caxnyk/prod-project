@@ -13,7 +13,7 @@ export default {
   }
 }
 
-const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage {...args} />
+const Template: ComponentStory<typeof ArticlesPage> = (args) => <ArticlesPage />
 
 export const Primary = Template.bind({})
 
