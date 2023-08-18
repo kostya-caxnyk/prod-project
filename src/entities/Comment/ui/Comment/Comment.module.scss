@@ -1,0 +1,13 @@
+.comment {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid var(--primary-color);
+  padding: 12px 20px;
+}
+
+.userInfo {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}

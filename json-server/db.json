@@ -112,13 +112,15 @@
       "id": "1",
       "username": "kostya",
       "password": "123123",
-      "role": "ADMIN"
+      "role": "ADMIN",
+      "avatar": "https://assets.website-files.com/61554cf069663530fc823d21/6369fed004b5b041b7ed686a_download-8-min.png"
     },
     {
       "id": "2",
       "username": "user",
       "password": "123",
-      "role": "USER"
+      "role": "USER",
+      "avatar": "https://assets.website-files.com/61554cf069663530fc823d21/6369fed004b5b041b7ed686a_download-8-min.png"
     }
   ]
 }
