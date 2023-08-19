@@ -5,9 +5,9 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher'
 import { LangSwitcher } from 'widgets/LangSwitcher'
-import { useTranslation } from 'react-i18next'
-import { sidebarLinks } from '../../model/links'
 import { SidebarLink } from '../SidebarLink/SidebarLink'
+import { useSelector } from 'react-redux'
+import { getSidebarItems } from '../../model/selectors/getSidebarItems'
 
 interface SidebarProps {
   className?: string
@@ -15,6 +15,8 @@ interface SidebarProps {
 
 export function Sidebar({ className }: SidebarProps) {
   const [isExpanded, toggleExpanded] = useState(true)
+
+  const sidebarItems = useSelector(getSidebarItems)
 
   const toggleSidebar = useCallback(() => {
     toggleExpanded((prev) => !prev)
@@ -28,7 +30,7 @@ export function Sidebar({ className }: SidebarProps) {
       ])}
     >
       <div className={cls.links}>
-        {sidebarLinks.map((link) => (
+        {sidebarItems.map((link) => (
           <SidebarLink link={link} isExpanded={isExpanded} key={link.path} />
         ))}
       </div>
