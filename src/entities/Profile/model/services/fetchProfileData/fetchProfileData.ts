@@ -4,11 +4,11 @@ import { ThunkConfig } from 'app/providers/StoreProvider'
 
 export const fetchProfileData = createAsyncThunk<
 Profile,
-undefined,
+string,
 ThunkConfig<string>
->('profile/fetchProfileData', async (_, ThunkApi) => {
+>('profile/fetchProfileData', async (id, ThunkApi) => {
   try {
-    const response = await ThunkApi.extra.api.get<Profile>('/profile')
+    const response = await ThunkApi.extra.api.get<Profile>('/profile/' + id)
 
     if (!response.data) {
       throw new Error()

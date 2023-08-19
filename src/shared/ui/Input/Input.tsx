@@ -11,7 +11,7 @@ interface InputProps<Name>
 }
 
 const InputComponent =
-  <Name extends string,>({ value, onChange, type = 'text', placeholder, autoFocus, name, ...props }: InputProps<Name>) => {
+  <Name extends string,>({ value, onChange, type = 'text', placeholder, autoFocus, name, className, ...props }: InputProps<Name>) => {
     const inputRef = useRef<HTMLInputElement>(null)
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       onChange?.(e.target.value, (name || '') as Name)
@@ -24,7 +24,7 @@ const InputComponent =
     }, [autoFocus])
 
     return (
-      <div className={cls.inputWrapper}>
+      <div className={classNames(className, cls.inputWrapper)}>
         {placeholder && (
           <div className={cls.placeholder}>{`${placeholder}>`}</div>
         )}

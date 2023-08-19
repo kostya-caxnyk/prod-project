@@ -19,12 +19,16 @@ import { useSelector } from 'react-redux'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
+import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { useParams } from 'react-router-dom'
+import { getUserAuthData } from 'entities/User'
 
 const ProfilePage = () => {
   useDynamicModuleLoader('profile', profileReducer)
 
   const { t } = useTranslation('profile')
   const dispatch = useAppDispatch()
+  const { id } = useParams<{ id: string }>()
 
   const readonly = useSelector(getProfileReadonly)
   const profileData = useSelector(getProfileData)
@@ -32,15 +36,15 @@ const ProfilePage = () => {
   const isLoading = useSelector(getProfileLoading)
   const validationErrors = useSelector(getProfileValidationErrors)
 
-  useEffect(() => {
-    dispatch(fetchProfileData()).then(console.log).catch(console.log)
+  useInitialEffect(() => {
+    if (id) {
+      void dispatch(fetchProfileData(id))
+    }
   }, [dispatch])
 
   const updateProfile = useCallback(
     (newData: Profile) => {
-      if (__PROJECT__ !== 'storybook') {
-        dispatch(profileActions.updateProfile(newData))
-      }
+      dispatch(profileActions.updateProfile(newData))
     },
     [dispatch]
   )

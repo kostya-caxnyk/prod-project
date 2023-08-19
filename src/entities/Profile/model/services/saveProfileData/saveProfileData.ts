@@ -6,9 +6,9 @@ import { validateProfileData } from '../validateProfileData/validateProfileData'
 
 export const saveProfileData = createAsyncThunk<
 Profile,
-undefined,
+string,
 ThunkConfig<ValidationProfileError[]>
->('profile/saveProfileData', async (_, ThunkApi) => {
+>('profile/saveProfileData', async (profileId, ThunkApi) => {
   try {
     const profile = getProfileData(ThunkApi.getState())
     if (!profile) {
@@ -20,7 +20,7 @@ ThunkConfig<ValidationProfileError[]>
       return ThunkApi.rejectWithValue(validationErrors)
     }
 
-    const response = await ThunkApi.extra.api.put<Profile>('/profile', profile)
+    const response = await ThunkApi.extra.api.put<Profile>('/profile/' + profileId, profile)
 
     if (!response.data) {
       throw new Error()

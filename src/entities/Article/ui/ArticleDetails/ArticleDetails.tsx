@@ -57,8 +57,6 @@ export const ArticleDetails = memo(({ id }: ArticleDetailsProps) => {
     }
   }, [])
 
-  console.log({ article })
-
   if (isLoading) {
     return (
       <div className={classNames(cls.articleDetails)}>

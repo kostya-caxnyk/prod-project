@@ -19,7 +19,7 @@ describe('save profile data test', () => {
     })
     thunk.api.put.mockReturnValue(Promise.resolve({ data: profileData }))
 
-    const res = await thunk.callThunk(undefined)
+    const res = await thunk.callThunk('1')
 
     expect(thunk.api.put).toHaveBeenCalled()
     expect(res.meta.requestStatus).toBe('fulfilled')
@@ -32,7 +32,7 @@ describe('save profile data test', () => {
     })
     thunk.api.put.mockReturnValue(Promise.resolve({ status: 403 }))
 
-    const res = await thunk.callThunk(undefined)
+    const res = await thunk.callThunk('1')
 
     expect(thunk.api.put).toHaveBeenCalled()
     expect(res.meta.requestStatus).toBe('rejected')
@@ -44,7 +44,7 @@ describe('save profile data test', () => {
       profile: { data: { ...profileData, age: 0 } }
     })
 
-    const res = await thunk.callThunk(undefined)
+    const res = await thunk.callThunk('1')
 
     expect(thunk.api.put).not.toHaveBeenCalled()
     expect(res.payload).toEqual([ValidationProfileError.INCORRECT_AGE])

@@ -14,7 +14,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -95,18 +97,44 @@
       "text": "some comment 3",
       "articleId": "1",
       "userId": "1"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "123123",
+      "id": "NWIuiPT"
+    },
+    {
+      "articleId": "1",
+      "userId": "1",
+      "text": "hello!",
+      "id": "2aGPTH3"
     }
   ],
-  "profile": {
-    "first": "Kostya",
-    "lastname": "Sakhnyuk",
-    "age": "21",
-    "currency": "UAH",
-    "country": "Ukraine",
-    "city": "Vinnitsya",
-    "username": "admin 228",
-    "avatar": "https://assets.website-files.com/61554cf069663530fc823d21/6369fed004b5b041b7ed686a_download-8-min.png"
-  },
+  "profile": [
+    {
+      "id": "1",
+      "first": "Kostya",
+      "lastname": "Sakhnyuk",
+      "age": "21",
+      "currency": "UAH",
+      "country": "Ukraine",
+      "city": "Vinnitsya",
+      "username": "admin 228",
+      "avatar": "https://assets.website-files.com/61554cf069663530fc823d21/6369fed004b5b041b7ed686a_download-8-min.png"
+    },
+    {
+      "id": "2",
+      "first": "asd",
+      "lastname": "dsa",
+      "age": "22",
+      "currency": "USD",
+      "country": "Armenia",
+      "city": "Yerevan",
+      "username": "user 2",
+      "avatar": "https://assets.website-files.com/61554cf069663530fc823d21/6369fed004b5b041b7ed686a_download-8-min.png"
+    }
+  ],
   "users": [
     {
       "id": "1",

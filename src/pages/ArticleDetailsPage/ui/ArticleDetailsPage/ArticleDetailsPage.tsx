@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { ArticleDetails } from 'entities/Article'
@@ -18,7 +18,9 @@ import {
   getArticleDetailsCommentsLoading
 } from '../../model/selectors/comments'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
-import { fetchCommentsByArticleId } from 'pages/ArticleDetailsPage/model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
+import { AddCommentForm } from 'features/AddCommentForm'
+import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle'
 
 const ArticleDetailsPage = memo(() => {
   const { t } = useTranslation('article')
@@ -39,12 +41,18 @@ const ArticleDetailsPage = memo(() => {
     }
   }, [id])
 
-  console.log({ comments })
+  const onSendComment = useCallback(
+    (text: string) => {
+      void dispatch(addCommentForArticle(text))
+    },
+    [dispatch]
+  )
 
   return (
     <>
       {id && <ArticleDetails id={id} />}
       <Text className={cls.commentsTitle} title={t('Comments')} />
+      <AddCommentForm onSendComment={onSendComment} />
       <CommentsList
         isLoading={isLoadingComments}
         error={commentsError}
