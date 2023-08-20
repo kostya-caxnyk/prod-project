@@ -1,6 +1,20 @@
-import { Article, ArticleList, ArticleView } from 'entities/Article'
-import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
+import React from 'react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
+
+import { ArticleListItem } from './ArticleListItem'
+import { Article, ArticleView } from '../../model/types/article'
+
+export default {
+  title: 'entities/Article/ArticleListItem',
+  component: ArticleListItem,
+  argTypes: {
+    backgroundColor: { control: 'color' }
+  }
+} as ComponentMeta<typeof ArticleListItem>
+
+const Template: ComponentStory<typeof ArticleListItem> = (args) => (
+  <ArticleListItem {...args} />
+)
 
 const article = {
   id: '1',
@@ -10,12 +24,6 @@ const article = {
   views: 1022,
   createdAt: '26.02.2022',
   type: ['IT'],
-  user: {
-    id: '1',
-    username: 'Kostya',
-    avatar:
-      'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.nj.com%2Fentertainment%2F2020%2F05%2Feveryones-posting-their-facebook-avatar-how-to-make-yours-even-if-it-looks-nothing-like-you.html&psig=AOvVaw0POudbbcSCKi4ofjUd3r0N&ust=1692610324131000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCMjFyPv26oADFQAAAAAdAAAAABAE'
-  },
   blocks: [
     {
       id: '1',
@@ -78,18 +86,14 @@ const article = {
   ]
 } as Article
 
-const ArticlesPage = memo(() => {
-  const { t } = useTranslation()
+export const Big = Template.bind({})
+Big.args = {
+  view: ArticleView.BIG,
+  article
+}
 
-  return (
-    <ArticleList
-      articles={Array.from({ length: 16 }).map((_, idx) => ({
-        ...article,
-        id: `${idx}`
-      }))}
-      view={ArticleView.BIG}
-    />
-  )
-})
-
-export default ArticlesPage
+export const Small = Template.bind({})
+Small.args = {
+  view: ArticleView.SMALL,
+  article
+}

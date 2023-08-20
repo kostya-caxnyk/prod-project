@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next'
 import { ArticleDetails } from 'entities/Article'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { Text } from 'shared/ui/Text/Text'
 import { CommentsList } from 'entities/Comment'
@@ -20,7 +20,9 @@ import {
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { AddCommentForm } from 'features/AddCommentForm'
-import { addCommentForArticle } from 'pages/ArticleDetailsPage/model/services/addCommentForArticle/addCommentForArticle'
+import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle'
+import { Button } from 'shared/ui/Button/Button'
+import { RoutePaths } from 'shared/config/routeConfig/routeConfig'
 
 const ArticleDetailsPage = memo(() => {
   const { t } = useTranslation('article')
@@ -29,6 +31,7 @@ const ArticleDetailsPage = memo(() => {
     articleDetailsCommentsReducer
   )
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
   const { id } = useParams<{ id: string }>()
 
   const comments = useSelector(getArticleComments.selectAll)
@@ -48,8 +51,13 @@ const ArticleDetailsPage = memo(() => {
     [dispatch]
   )
 
+  const onBackToList = useCallback(() => {
+    navigate(RoutePaths.articles)
+  }, [navigate])
+
   return (
     <>
+      <Button onClick={onBackToList}>{t('Back to list')}</Button>
       {id && <ArticleDetails id={id} />}
       <Text className={cls.commentsTitle} title={t('Comments')} />
       <AddCommentForm onSendComment={onSendComment} />

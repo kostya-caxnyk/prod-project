@@ -1,10 +1,10 @@
 import React, { memo } from 'react'
 
 import cls from './SidebarLink.module.scss'
-import { type SidebarLinkType } from 'widgets/Sidebar/model/links'
 import { AppLink, LinkTheme } from 'shared/ui/AppLink/AppLink'
 import { useSelector } from 'react-redux'
 import { getUserAuthData } from 'entities/User'
+import { SidebarLinkType } from '../../model/selectors/getSidebarItems'
 
 interface SidebarLinkProps {
   link: SidebarLinkType
