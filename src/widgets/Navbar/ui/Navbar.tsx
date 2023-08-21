@@ -23,7 +23,7 @@ export function Navbar({ className }: NavbarProps) {
   }, [dispatch])
 
   return (
-    <div className={classNames(cls.navbar, {}, [className])}>
+    <header className={classNames(cls.navbar, className)}>
       <div className={cls.links}>
         {user ? (
           <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
@@ -36,6 +36,6 @@ export function Navbar({ className }: NavbarProps) {
         )}
         <LoginModal isOpen={isOpenAuthModal} onClose={toggleAuthModal} />
       </div>
-    </div>
+    </header>
   )
 }

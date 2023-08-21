@@ -11,9 +11,7 @@ function AppRouter() {
       : route
   )
   return (
-    <Suspense fallback={<PageLoader />}>
-      <div className="page-wrapper">{useRoutes(routesToRender)}</div>
-    </Suspense>
+    <Suspense fallback={<PageLoader />}>{useRoutes(routesToRender)}</Suspense>
   )
 }
 

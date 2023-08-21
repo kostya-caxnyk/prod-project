@@ -23,6 +23,7 @@ import { AddCommentForm } from 'features/AddCommentForm'
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle'
 import { Button } from 'shared/ui/Button/Button'
 import { RoutePaths } from 'shared/config/routeConfig/routeConfig'
+import { Page } from 'shared/ui/Page/Page'
 
 const ArticleDetailsPage = memo(() => {
   const { t } = useTranslation('article')
@@ -56,7 +57,7 @@ const ArticleDetailsPage = memo(() => {
   }, [navigate])
 
   return (
-    <>
+    <Page>
       <Button onClick={onBackToList}>{t('Back to list')}</Button>
       {id && <ArticleDetails id={id} />}
       <Text className={cls.commentsTitle} title={t('Comments')} />
@@ -66,7 +67,7 @@ const ArticleDetailsPage = memo(() => {
         error={commentsError}
         comments={comments}
       />
-    </>
+    </Page>
   )
 })
 

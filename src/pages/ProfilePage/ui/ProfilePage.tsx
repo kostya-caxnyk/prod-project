@@ -22,6 +22,7 @@ import { useTranslation } from 'react-i18next'
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useParams } from 'react-router-dom'
 import { getUserAuthData } from 'entities/User'
+import { Page } from 'shared/ui/Page/Page'
 
 const ProfilePage = () => {
   useDynamicModuleLoader('profile', profileReducer)
@@ -58,7 +59,7 @@ const ProfilePage = () => {
   }
 
   return (
-    <div className={cls.profilePage}>
+    <Page className={cls.profilePage}>
       <ProfilePageHeader />
       {validationErrors?.map((error) => (
         <Text
@@ -74,7 +75,7 @@ const ProfilePage = () => {
         onChange={updateProfile}
         readonly={readonly}
       />
-    </div>
+    </Page>
   )
 }
 
