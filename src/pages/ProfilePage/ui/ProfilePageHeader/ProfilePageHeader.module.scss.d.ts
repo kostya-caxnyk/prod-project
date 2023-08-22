@@ -1,12 +1,12 @@
 declare namespace ProfilePageHeaderModuleScssNamespace {
   export interface IProfilePageHeaderModuleScss {
-    header: string
+    header: string;
   }
 }
 
 declare const ProfilePageHeaderModuleScssModule: ProfilePageHeaderModuleScssNamespace.IProfilePageHeaderModuleScss & {
   /** WARNING: Only available when `css-loader` is used without `style-loader` or `mini-css-extract-plugin` */
-  locals: ProfilePageHeaderModuleScssNamespace.IProfilePageHeaderModuleScss
+  locals: ProfilePageHeaderModuleScssNamespace.IProfilePageHeaderModuleScss;
 }
 
 export = ProfilePageHeaderModuleScssModule

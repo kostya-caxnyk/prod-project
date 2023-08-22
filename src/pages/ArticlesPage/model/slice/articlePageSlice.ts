@@ -8,6 +8,12 @@ import { StateSchema } from 'app/providers/StoreProvider'
 import { ArticlesPageSchema } from '../types/articlesPageSchema'
 import { fetchArticlesList } from '../services/fetchArticlesList/fetchArticlesList'
 import { ARTICLE_VIEW__LOCALSTORAGE_KEY } from 'shared/const/localStorage'
+import {
+  ArticleBlockType,
+  ArticleSortField,
+  ArticleType
+} from 'entities/Article/model/types/article'
+import { SortOrder } from 'shared/types'
 
 const articlesAdapter = createEntityAdapter<Article>({
   selectId: (article) => article.id
@@ -27,7 +33,12 @@ export const articlesPageSlice = createSlice({
     isLoading: false,
     page: 1,
     hasMore: true,
-    _inited: false
+    _inited: false,
+    limit: 9,
+    search: '',
+    order: 'asc',
+    sort: ArticleSortField.CREATED,
+    type: ArticleType.ALL
   }),
   reducers: {
     setView: (state, action: PayloadAction<ArticleView>) => {
@@ -36,6 +47,18 @@ export const articlesPageSlice = createSlice({
     },
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload
+    },
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload
+    },
+    setSort: (state, action: PayloadAction<ArticleSortField>) => {
+      state.sort = action.payload
+    },
+    setOrder: (state, action: PayloadAction<SortOrder>) => {
+      state.order = action.payload
+    },
+    setType: (state, action: PayloadAction<ArticleType>) => {
+      state.type = action.payload
     },
     initState: (state) => {
       const view = localStorage.getItem(
@@ -48,7 +71,10 @@ export const articlesPageSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchArticlesList.pending, (state) => {
+      .addCase(fetchArticlesList.pending, (state, action) => {
+        if (action.meta.arg.replace) {
+          articlesAdapter.removeAll(state)
+        }
         state.error = undefined
         state.isLoading = true
       })
@@ -57,9 +83,14 @@ export const articlesPageSlice = createSlice({
         state.isLoading = false
       })
       .addCase(fetchArticlesList.fulfilled, (state, action) => {
-        articlesAdapter.addMany(state, action.payload)
         state.isLoading = false
         state.hasMore = action.payload.length > 0
+
+        if (action.meta.arg.replace) {
+          articlesAdapter.setAll(state, action.payload)
+        } else {
+          articlesAdapter.addMany(state, action.payload)
+        }
       })
   }
 })

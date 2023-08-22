@@ -6,6 +6,7 @@ import { classNames } from 'shared/lib/classNames/classNames'
 import { Article, ArticleView } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
+import { Text } from 'shared/ui/Text/Text'
 
 interface ArticleListProps {
   articles: Article[]
@@ -24,6 +25,10 @@ export const ArticleList = memo(
 
     const renderArticle = (article: Article) => {
       return <ArticleListItem article={article} key={article.id} view={view} />
+    }
+
+    if (!isLoading && !articles.length) {
+      return <Text title={t('Articles not found')} />
     }
 
     return (

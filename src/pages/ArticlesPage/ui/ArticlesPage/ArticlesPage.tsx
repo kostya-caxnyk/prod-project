@@ -14,20 +14,25 @@ import {
   getArticlesPageLoading,
   getArticlesPageView
 } from '../../model/selectors/articlesPageSelectors'
-import { Page } from 'shared/ui/Page/Page'
+import { Page } from 'widgets/Page/Page'
 import { fetchNextArticlesPage } from '../../model/services/fetchNextArticlesPage/fetchNextArticlesPage'
 import { initArticlesPage } from 'pages/ArticlesPage/model/services/initArticlesPage/initArticlesPage'
+import { ArticlesPageFilters } from '../ArticlesPageFilters/ArticlesPageFilters'
+import { useSearchParams } from 'react-router-dom'
+import { Text } from 'shared/ui/Text/Text'
 
 const ArticlesPage = memo(() => {
   const { t } = useTranslation()
   useDynamicModuleLoader('articlesPage', articlesPageReducer, false)
   const dispatch = useAppDispatch()
+  const [searchParams] = useSearchParams()
+
   const articles = useSelector(getArticles.selectAll)
   const isLoading = useSelector(getArticlesPageLoading)
   const view = useSelector(getArticlesPageView)
 
   useInitialEffect(() => {
-    void dispatch(initArticlesPage())
+    void dispatch(initArticlesPage(searchParams))
   }, [])
 
   const onChangeView = useCallback(
@@ -43,7 +48,7 @@ const ArticlesPage = memo(() => {
 
   return (
     <Page onScrollEnd={onLoadNextPage}>
-      <ArticleViewSelector view={view} onViewClick={onChangeView} />
+      <ArticlesPageFilters />
       <ArticleList articles={articles} view={view} isLoading={isLoading} />
     </Page>
   )
