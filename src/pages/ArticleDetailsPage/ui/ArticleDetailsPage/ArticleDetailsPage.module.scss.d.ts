@@ -1,6 +1,7 @@
 declare namespace ArticleDetailsPageModuleScssNamespace {
   export interface IArticleDetailsPageModuleScss {
     commentsTitle: string;
+    recommendations: string;
   }
 }
 

@@ -7,11 +7,14 @@ import { Article, ArticleView } from '../../model/types/article'
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 import { Text } from 'shared/ui/Text/Text'
+import { LinkProps } from 'react-router-dom'
 
 interface ArticleListProps {
   articles: Article[]
   isLoading?: boolean
   view?: ArticleView
+  className?: string
+  target?: LinkProps['target']
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -20,11 +23,24 @@ const getSkeletons = (view: ArticleView) =>
     .map((item, index) => <ArticleListItemSkeleton key={index} view={view} />)
 
 export const ArticleList = memo(
-  ({ articles, view = ArticleView.SMALL, isLoading }: ArticleListProps) => {
+  ({
+    articles,
+    view = ArticleView.SMALL,
+    isLoading,
+    className,
+    target
+  }: ArticleListProps) => {
     const { t } = useTranslation()
 
     const renderArticle = (article: Article) => {
-      return <ArticleListItem article={article} key={article.id} view={view} />
+      return (
+        <ArticleListItem
+          target={target}
+          article={article}
+          key={article.id}
+          view={view}
+        />
+      )
     }
 
     if (!isLoading && !articles.length) {
@@ -32,7 +48,7 @@ export const ArticleList = memo(
     }
 
     return (
-      <div className={classNames(cls.articleList)}>
+      <div className={classNames(cls.articleList, className)}>
         {articles.length > 0 ? articles.map(renderArticle) : null}
         {isLoading && getSkeletons(view)}
       </div>

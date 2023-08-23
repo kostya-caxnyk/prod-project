@@ -38,7 +38,7 @@ module.exports = {
       'error',
       {
         markupOnly: true,
-        ignoreAttribute: ['data-testid', 'fill', 'stroke', 'name']
+        ignoreAttribute: ['data-testid', 'fill', 'stroke', 'name', 'target']
       }
     ],
     '@typescript-eslint/space-before-function-paren': 'off',

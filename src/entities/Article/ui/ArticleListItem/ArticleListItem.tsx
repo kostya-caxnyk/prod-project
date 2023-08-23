@@ -7,7 +7,7 @@ import EyeIcon from 'shared/assets/icons/eye.svg'
 import { Card } from 'shared/ui/Card/Card'
 import { Avatar } from 'shared/ui/Avatar/Avatar'
 import { Button, ButtonTheme } from 'shared/ui/Button/Button'
-import { generatePath, useNavigate } from 'react-router-dom'
+import { LinkProps, generatePath, useNavigate } from 'react-router-dom'
 import cls from './ArticleListItem.module.scss'
 import {
   Article,
@@ -17,14 +17,16 @@ import {
 } from '../../model/types/article'
 import { ArticleTextBlockComponent } from '../ArticleTextBlockComponent/ArticleTextBlockComponent'
 import { RoutePaths } from 'shared/config/routeConfig/routeConfig'
+import { AppLink } from 'shared/ui/AppLink/AppLink'
 
 interface ArticleListItemProps {
   article: Article
   view: ArticleView
+  target?: LinkProps['target']
 }
 
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
-  const { article, view } = props
+  const { article, view, target } = props
   const { t } = useTranslation()
   const navigate = useNavigate()
 
@@ -63,9 +65,14 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
             />
           )}
           <div className={cls.footer}>
-            <Button onClick={onOpenArticle} theme={ButtonTheme.OUTLINE}>
-              {t('Читать далее...')}
-            </Button>
+            <AppLink
+              to={generatePath(RoutePaths.articleDetails, { id: article.id })}
+            >
+              <Button theme={ButtonTheme.OUTLINE}>
+                {t('Читать далее...')}
+              </Button>
+            </AppLink>
+
             {views}
           </div>
         </Card>
@@ -74,18 +81,23 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   }
 
   return (
-    <div className={cls[view]}>
-      <Card onClick={onOpenArticle}>
-        <div className={cls.imageWrapper}>
-          <img alt={article.title} src={article.img} className={cls.img} />
-          <Text text={article.createdAt} className={cls.date} />
-        </div>
-        <div className={cls.infoWrapper}>
-          {types}
-          {views}
-        </div>
-        <Text text={article.title} className={cls.title} />
-      </Card>
-    </div>
+    <AppLink
+      to={generatePath(RoutePaths.articleDetails, { id: article.id })}
+      target={target}
+    >
+      <div className={cls[view]}>
+        <Card>
+          <div className={cls.imageWrapper}>
+            <img alt={article.title} src={article.img} className={cls.img} />
+            <Text text={article.createdAt} className={cls.date} />
+          </div>
+          <div className={cls.infoWrapper}>
+            {types}
+            {views}
+          </div>
+          <Text text={article.title} className={cls.title} />
+        </Card>
+      </div>
+    </AppLink>
   )
 })
