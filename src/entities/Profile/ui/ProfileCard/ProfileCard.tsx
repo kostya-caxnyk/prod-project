@@ -21,7 +21,7 @@ interface ProfileCardProps {
 
 export const ProfileCard = memo(
   ({ data, error, isLoading, readonly, onChange }: ProfileCardProps) => {
-    const { t } = useTranslation('profile')
+    const { t } = useTranslation()
 
     const changeField = useCallback(
       (value: string, field: keyof Profile) => {

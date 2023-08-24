@@ -27,7 +27,7 @@ import { Page } from 'widgets/Page/Page'
 const ProfilePage = () => {
   useDynamicModuleLoader('profile', profileReducer)
 
-  const { t } = useTranslation('profile')
+  const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const { id } = useParams<{ id: string }>()
 

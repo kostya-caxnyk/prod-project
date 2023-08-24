@@ -21,8 +21,6 @@ import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEf
 import { fetchCommentsByArticleId } from '../../model/services/fetchCommentsByArticleId/fetchCommentsByArticleId'
 import { AddCommentForm } from 'features/AddCommentForm'
 import { addCommentForArticle } from '../../model/services/addCommentForArticle/addCommentForArticle'
-import { Button } from 'shared/ui/Button/Button'
-import { RoutePaths } from 'shared/config/routeConfig/routeConfig'
 import { Page } from 'widgets/Page/Page'
 import { getArticleRecommendations } from '../../model/slice/articleDetailsPageRecommendationsSlice'
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations'
@@ -31,7 +29,7 @@ import { articleDetailsPageReducer } from '../../model/slice'
 import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 
 const ArticleDetailsPage = memo(() => {
-  const { t } = useTranslation('article')
+  const { t } = useTranslation()
   useDynamicModuleLoader('articleDetailsPage', articleDetailsPageReducer)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
@@ -59,10 +57,6 @@ const ArticleDetailsPage = memo(() => {
     [dispatch]
   )
 
-  const onBackToList = useCallback(() => {
-    navigate(RoutePaths.articles)
-  }, [navigate])
-
   return (
     <Page>
       <ArticleDetailsPageHeader />
@@ -70,7 +64,7 @@ const ArticleDetailsPage = memo(() => {
       <Text
         size={TextSize.L}
         className={cls.commentsTitle}
-        title={t('Рекомендуем')}
+        title={t('Recommend')}
       />
       <ArticleList
         articles={recommendations}

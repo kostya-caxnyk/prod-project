@@ -61,7 +61,7 @@ export const Page = memo((props: PageProps) => {
       className={classNames(cls.page, className)}
     >
       {children}
-      <div ref={triggerRef} />
+      <div ref={triggerRef} className={cls.trigger} />
     </section>
   )
 })

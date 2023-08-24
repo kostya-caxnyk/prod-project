@@ -28,11 +28,6 @@ interface ArticleListItemProps {
 export const ArticleListItem = memo((props: ArticleListItemProps) => {
   const { article, view, target } = props
   const { t } = useTranslation()
-  const navigate = useNavigate()
-
-  const onOpenArticle = useCallback(() => {
-    navigate(generatePath(RoutePaths.article_details, { id: article.id }))
-  }, [article.id, navigate])
 
   const types = <Text text={article.type.join(', ')} className={cls.types} />
   const views = (
@@ -69,7 +64,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
               to={generatePath(RoutePaths.article_details, { id: article.id })}
             >
               <Button theme={ButtonTheme.OUTLINE}>
-                {t('Читать далее...')}
+                {t('Continue reading')}
               </Button>
             </AppLink>
 
