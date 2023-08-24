@@ -28,6 +28,7 @@ import { getArticleRecommendations } from '../../model/slice/articleDetailsPageR
 import { getArticleRecommendationsIsLoading } from '../../model/selectors/recommendations'
 import { fetchArticleRecommendations } from '../../model/services/fetchArticleRecommendations/fetchArticleRecommendations'
 import { articleDetailsPageReducer } from '../../model/slice'
+import { ArticleDetailsPageHeader } from '../ArticleDetailsPageHeader/ArticleDetailsPageHeader'
 
 const ArticleDetailsPage = memo(() => {
   const { t } = useTranslation('article')
@@ -64,7 +65,7 @@ const ArticleDetailsPage = memo(() => {
 
   return (
     <Page>
-      <Button onClick={onBackToList}>{t('Back to list')}</Button>
+      <ArticleDetailsPageHeader />
       {id && <ArticleDetails id={id} />}
       <Text
         size={TextSize.L}

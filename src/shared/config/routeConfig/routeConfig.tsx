@@ -1,5 +1,6 @@
 import { AboutPageLazy } from 'pages/AboutPage'
 import { ArticleDetailsPageLazy } from 'pages/ArticleDetailsPage'
+import { ArticleEditPage } from 'pages/ArticleEditPage'
 import { ArticlesPageLazy } from 'pages/ArticlesPage'
 import { MainPageLazy } from 'pages/MainPage'
 import { NotFoundPage } from 'pages/NotFoundPage'
@@ -11,7 +12,9 @@ export enum AppRoutes {
   ABOUT = 'about',
   PROFILE = 'profile',
   ARTICLES = 'articles',
-  ARTICLE_DETAILS = 'articleDetails',
+  ARTICLE_DETAILS = 'article_details',
+  ARTICLE_EDIT = 'article_edit',
+  ARTICLE_CREATE = 'article_create',
 
   NOT_FOUND = 'not_found'
 }
@@ -22,6 +25,8 @@ export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.PROFILE]: '/profile/:id',
   [AppRoutes.ARTICLES]: '/articles',
   [AppRoutes.ARTICLE_DETAILS]: '/articles/:id',
+  [AppRoutes.ARTICLE_EDIT]: '/articles/:id/edit',
+  [AppRoutes.ARTICLE_CREATE]: '/articles/create',
 
   [AppRoutes.NOT_FOUND]: '*'
 }
@@ -48,8 +53,18 @@ export const routes: AppRouteObject[] = [
     authOnly: true
   },
   {
-    path: RoutePaths.articleDetails,
+    path: RoutePaths.article_details,
     element: <ArticleDetailsPageLazy />,
+    authOnly: true
+  },
+  {
+    path: RoutePaths.article_edit,
+    element: <ArticleEditPage />,
+    authOnly: true
+  },
+  {
+    path: RoutePaths.article_create,
+    element: <ArticleEditPage />,
     authOnly: true
   },
   {

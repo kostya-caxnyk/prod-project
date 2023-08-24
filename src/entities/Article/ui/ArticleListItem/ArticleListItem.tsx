@@ -31,7 +31,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
   const navigate = useNavigate()
 
   const onOpenArticle = useCallback(() => {
-    navigate(generatePath(RoutePaths.articleDetails, { id: article.id }))
+    navigate(generatePath(RoutePaths.article_details, { id: article.id }))
   }, [article.id, navigate])
 
   const types = <Text text={article.type.join(', ')} className={cls.types} />
@@ -66,7 +66,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
           )}
           <div className={cls.footer}>
             <AppLink
-              to={generatePath(RoutePaths.articleDetails, { id: article.id })}
+              to={generatePath(RoutePaths.article_details, { id: article.id })}
             >
               <Button theme={ButtonTheme.OUTLINE}>
                 {t('Читать далее...')}
@@ -82,7 +82,7 @@ export const ArticleListItem = memo((props: ArticleListItemProps) => {
 
   return (
     <AppLink
-      to={generatePath(RoutePaths.articleDetails, { id: article.id })}
+      to={generatePath(RoutePaths.article_details, { id: article.id })}
       target={target}
     >
       <div className={cls[view]}>
