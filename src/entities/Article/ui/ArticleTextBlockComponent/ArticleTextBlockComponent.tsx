@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 
 import cls from './ArticleTextBlockComponent.module.scss'
-import { ArticleTextBlock } from 'entities/Article/model/types/article'
+import { ArticleTextBlock } from '../../model/types/article'
 import { Text } from 'shared/ui/Text/Text'
 
 interface ArticleTextBlockComponentProps {

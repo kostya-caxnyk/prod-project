@@ -9,9 +9,9 @@ import { useSelector } from 'react-redux'
 import {
   loginActions,
   loginReducer
-} from 'features/AuthByUsername/model/slice/loginSlice'
-import { getLoginState } from 'features/AuthByUsername/model/selectors/getLoginState/getLoginState'
-import { loginByUsername } from 'features/AuthByUsername/model/services/loginByUsername/loginByUsername'
+} from '../../model/slice/loginSlice'
+import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
+import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
 import { Text, TextTheme } from 'shared/ui/Text/Text'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'

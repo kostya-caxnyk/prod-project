@@ -24,8 +24,9 @@ module.exports = {
     sourceType: 'module',
     project: ['./tsconfig.json']
   },
-  plugins: ['react', 'i18next', 'react-hooks'],
+  plugins: ['custom-rules', 'react', 'i18next', 'react-hooks'],
   rules: {
+    'custom-rules/path-checker': 'error',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',

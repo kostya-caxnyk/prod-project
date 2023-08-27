@@ -14,7 +14,7 @@ import { useSelector } from 'react-redux'
 import {
   getAddCommentFormError,
   getAddCommentFormText
-} from 'features/AddCommentForm/model/selectors/getCommentFormSelectors'
+} from '../../model/selectors/getCommentFormSelectors'
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 interface AddCommentFormProps {
