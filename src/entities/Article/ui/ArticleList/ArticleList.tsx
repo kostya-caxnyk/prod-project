@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback, useContext } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cls from './ArticleList.module.scss'
@@ -8,6 +8,13 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 import { Text } from 'shared/ui/Text/Text'
 import { LinkProps } from 'react-router-dom'
+import {
+  AutoSizer,
+  List,
+  ListRowProps,
+  WindowScroller
+} from 'react-virtualized'
+import { pageContext } from 'widgets/Page/Page'
 
 interface ArticleListProps {
   articles: Article[]
@@ -31,27 +38,76 @@ export const ArticleList = memo(
     target
   }: ArticleListProps) => {
     const { t } = useTranslation()
+    const page = useContext(pageContext)
 
-    const renderArticle = (article: Article) => {
-      return (
-        <ArticleListItem
-          target={target}
-          article={article}
-          key={article.id}
-          view={view}
-        />
-      )
-    }
+    const isBig = view === ArticleView.BIG
+
+    const itemsPerRow = isBig ? 1 : Math.floor((page?.clientWidth || 700) / 230)
+    const rowCount = isBig ? articles.length : articles.length / itemsPerRow
+
+    const rowRenderer = useCallback(
+      ({ index, key, style }: ListRowProps) => {
+        const itemsToRender = []
+        const fromIndex = index * itemsPerRow
+        const toIndex = Math.min(fromIndex + itemsPerRow, articles.length)
+
+        for (let i = fromIndex; i < toIndex; i++) {
+          itemsToRender.push(
+            <ArticleListItem
+              target={target}
+              article={articles[i]}
+              view={view}
+              key={articles[i].id}
+            />
+          )
+        }
+
+        return (
+          <div key={key} style={style} className={cls.cardRow}>
+            {itemsToRender}
+          </div>
+        )
+      },
+      [articles, itemsPerRow, target, view]
+    )
 
     if (!isLoading && !articles.length) {
       return <Text title={t('Articles not found')} />
     }
 
     return (
-      <div className={classNames(cls.articleList, className)}>
-        {articles.length > 0 ? articles.map(renderArticle) : null}
-        {isLoading && getSkeletons(view)}
-      </div>
+      <>
+        <WindowScroller scrollElement={page as Element}>
+          {({
+            width,
+            height,
+            onChildScroll,
+            isScrolling,
+            scrollTop,
+            registerChild
+          }) => (
+            <div
+              ref={registerChild}
+              className={classNames(cls.articleList, className)}
+            >
+              <List
+                height={height || 700}
+                width={width - 80 || 700}
+                rowCount={rowCount}
+                rowHeight={isBig ? 700 : 330}
+                rowRenderer={rowRenderer}
+                scrollTop={scrollTop}
+                autoHeight
+                isScrolling={isScrolling}
+                onScroll={onChildScroll}
+              />
+            </div>
+          )}
+        </WindowScroller>
+        <div className={classNames(cls.articleList)}>
+          {isLoading && getSkeletons(view)}
+        </div>
+      </>
     )
   }
 )

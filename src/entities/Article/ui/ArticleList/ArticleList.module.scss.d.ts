@@ -1,6 +1,7 @@
 declare namespace ArticleListModuleScssNamespace {
   export interface IArticleListModuleScss {
     articleList: string;
+    cardRow: string;
   }
 }
 

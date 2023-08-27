@@ -1,5 +1,6 @@
 import { classNames } from 'shared/lib/classNames/classNames'
 import {
+  createContext,
   memo,
   MutableRefObject,
   ReactNode,
@@ -24,6 +25,8 @@ interface PageProps {
   children: ReactNode
   onScrollEnd?: () => void
 }
+
+export const pageContext = createContext<HTMLDivElement | null>(null)
 
 export const Page = memo((props: PageProps) => {
   const { className, children, onScrollEnd } = props
@@ -55,13 +58,15 @@ export const Page = memo((props: PageProps) => {
   }, 500)
 
   return (
-    <section
-      onScroll={onScroll}
-      ref={wrapperRef}
-      className={classNames(cls.page, className)}
-    >
-      {children}
-      <div ref={triggerRef} className={cls.trigger} />
-    </section>
+    <pageContext.Provider value={wrapperRef.current}>
+      <section
+        onScroll={onScroll}
+        ref={wrapperRef}
+        className={classNames(cls.page, className)}
+      >
+        {children}
+        <div ref={triggerRef} className={cls.trigger} />
+      </section>
+    </pageContext.Provider>
   )
 })
