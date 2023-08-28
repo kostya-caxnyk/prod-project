@@ -8,6 +8,7 @@ import { LangSwitcher } from 'widgets/LangSwitcher'
 import { SidebarLink } from '../SidebarLink/SidebarLink'
 import { useSelector } from 'react-redux'
 import { getSidebarItems } from '../../model/selectors/getSidebarItems'
+import { VStack } from 'shared/ui/Stack'
 
 interface SidebarProps {
   className?: string
@@ -29,11 +30,11 @@ export function Sidebar({ className }: SidebarProps) {
         className
       ])}
     >
-      <div className={cls.links}>
+      <VStack className={cls.links} align="center" gap="16">
         {sidebarItems.map((link) => (
           <SidebarLink link={link} isExpanded={isExpanded} key={link.path} />
         ))}
-      </div>
+      </VStack>
       <Button
         data-testid="sidebar-toggle"
         onClick={toggleSidebar}

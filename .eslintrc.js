@@ -39,7 +39,15 @@ module.exports = {
       'error',
       {
         markupOnly: true,
-        ignoreAttribute: ['data-testid', 'fill', 'stroke', 'name', 'target']
+        ignoreAttribute: [
+          'data-testid',
+          'fill',
+          'stroke',
+          'name',
+          'target',
+          'direction',
+          'align'
+        ]
       }
     ],
     '@typescript-eslint/space-before-function-paren': 'off',
