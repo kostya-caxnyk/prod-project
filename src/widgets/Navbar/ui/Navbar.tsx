@@ -7,6 +7,10 @@ import { LoginModal } from 'features/AuthByUsername'
 import { useDispatch, useSelector } from 'react-redux'
 import { getUserAuthData, userActions } from 'entities/User'
 import { useCallback } from 'react'
+import { Dropdown } from 'shared/ui/Dropdown/Dropdown'
+import { Avatar } from 'shared/ui/Avatar/Avatar'
+import { generatePath } from 'react-router-dom'
+import { RoutePaths } from 'shared/config/routeConfig/routeConfig'
 
 interface NavbarProps {
   className?: string
@@ -26,9 +30,17 @@ export function Navbar({ className }: NavbarProps) {
     <header className={classNames(cls.navbar, className)}>
       <div className={cls.links}>
         {user ? (
-          <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={onLogout}>
-            {t('Log out')}
-          </Button>
+          <Dropdown
+            direction="bottom left"
+            items={[
+              {
+                content: t('Profile'),
+                href: generatePath(RoutePaths.profile, { id: user.id })
+              },
+              { content: t('Log out'), onClick: onLogout }
+            ]}
+            trigger={<Avatar size={30} src={user?.avatar} />}
+          />
         ) : (
           <Button theme={ButtonTheme.CLEAR_INVERTED} onClick={toggleAuthModal}>
             {t('Sign in')}

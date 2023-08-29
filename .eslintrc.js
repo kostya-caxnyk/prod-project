@@ -46,7 +46,8 @@ module.exports = {
           'name',
           'target',
           'direction',
-          'align'
+          'align',
+          'as'
         ]
       }
     ],
