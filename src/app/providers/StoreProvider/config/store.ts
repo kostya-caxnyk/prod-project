@@ -5,12 +5,14 @@ import { createReducerManager } from './reducerManager'
 import { api } from 'shared/api/api'
 import { type Reducer, type CombinedState } from 'redux'
 import { scrollRestorationReducer } from 'features/ScrollRestoration'
+import { rtkApi } from 'shared/api/rtkApi'
 
 export function createReduxStore(initialState?: StateSchema, asyncReducers?: ReducersMapObject<StateSchema>) {
   const rootReducer: ReducersMapObject<StateSchema> = {
     ...asyncReducers,
     user: userReducer,
-    scrollRestoration: scrollRestorationReducer
+    scrollRestoration: scrollRestorationReducer,
+    [rtkApi.reducerPath]: rtkApi.reducer
   }
 
   const reducerManager = createReducerManager(rootReducer)
@@ -28,7 +30,7 @@ export function createReduxStore(initialState?: StateSchema, asyncReducers?: Red
         thunk: {
           extraArgument: extraArg
         }
-      })
+      }).concat(rtkApi.middleware)
   })
 
   // @ts-expect-error no such field

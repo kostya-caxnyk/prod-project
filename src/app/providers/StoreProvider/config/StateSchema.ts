@@ -9,10 +9,12 @@ import { ArticleDetailsPageSchema } from 'pages/ArticleDetailsPage'
 import { AddCommentFormSchema } from 'features/AddCommentForm'
 import { ArticlesPageSchema } from 'pages/ArticlesPage'
 import { ScrollRestorationSchema } from 'features/ScrollRestoration'
+import { rtkApi } from 'shared/api/rtkApi'
 
 export interface StateSchema {
   user: UserSchema
   scrollRestoration: ScrollRestorationSchema
+  [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>
 
   // lazy reducers
   loginForm?: LoginSchema
@@ -21,6 +23,7 @@ export interface StateSchema {
   articleDetailsPage?: ArticleDetailsPageSchema
   addCommentForm?: AddCommentFormSchema
   articlesPage?: ArticlesPageSchema
+
 }
 
 export type StateSchemaKey = keyof StateSchema
