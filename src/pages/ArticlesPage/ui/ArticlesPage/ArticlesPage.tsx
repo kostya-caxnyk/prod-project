@@ -20,7 +20,6 @@ interface ArticlesPageProps {
 
 const ArticlesPage = (props: ArticlesPageProps) => {
   const { className } = props
-  const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const [searchParams] = useSearchParams()
   useDynamicModuleLoader('articlesPage', articlesPageReducer)
@@ -31,7 +30,7 @@ const ArticlesPage = (props: ArticlesPageProps) => {
 
   useInitialEffect(() => {
     void dispatch(initArticlesPage(searchParams))
-  })
+  }, [])
 
   return (
     <Page

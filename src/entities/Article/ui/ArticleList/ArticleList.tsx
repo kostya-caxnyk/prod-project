@@ -8,13 +8,7 @@ import { ArticleListItem } from '../ArticleListItem/ArticleListItem'
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton'
 import { Text } from 'shared/ui/Text/Text'
 import { LinkProps } from 'react-router-dom'
-import {
-  AutoSizer,
-  List,
-  ListRowProps,
-  WindowScroller
-} from 'react-virtualized'
-import { pageContext } from 'widgets/Page/Page'
+import { List, ListRowProps, WindowScroller } from 'react-virtualized'
 
 interface ArticleListProps {
   articles: Article[]
@@ -22,6 +16,7 @@ interface ArticleListProps {
   view?: ArticleView
   className?: string
   target?: LinkProps['target']
+  virtualized?: boolean
 }
 
 const getSkeletons = (view: ArticleView) =>
@@ -35,13 +30,13 @@ export const ArticleList = memo(
     view = ArticleView.SMALL,
     isLoading,
     className,
-    target
+    target,
+    virtualized
   }: ArticleListProps) => {
     const { t } = useTranslation()
-    const page = useContext(pageContext)
+    const page = document.getElementById('page-id') as Element
 
     const isBig = view === ArticleView.BIG
-
     const itemsPerRow = isBig ? 1 : Math.floor((page?.clientWidth || 700) / 230)
     const rowCount = isBig ? articles.length : articles.length / itemsPerRow
 
@@ -77,7 +72,7 @@ export const ArticleList = memo(
 
     return (
       <>
-        <WindowScroller scrollElement={page as Element}>
+        <WindowScroller scrollElement={page}>
           {({
             width,
             height,
@@ -90,17 +85,28 @@ export const ArticleList = memo(
               ref={registerChild}
               className={classNames(cls.articleList, className)}
             >
-              <List
-                height={height || 700}
-                width={width - 80 || 700}
-                rowCount={rowCount}
-                rowHeight={isBig ? 700 : 330}
-                rowRenderer={rowRenderer}
-                scrollTop={scrollTop}
-                autoHeight
-                isScrolling={isScrolling}
-                onScroll={onChildScroll}
-              />
+              {virtualized ? (
+                <List
+                  height={height || 700}
+                  width={width - 80 || 700}
+                  rowCount={rowCount}
+                  rowHeight={isBig ? 700 : 330}
+                  rowRenderer={rowRenderer}
+                  scrollTop={scrollTop}
+                  autoHeight
+                  isScrolling={isScrolling}
+                  onScroll={onChildScroll}
+                />
+              ) : (
+                articles.map((article) => (
+                  <ArticleListItem
+                    target={target}
+                    article={article}
+                    view={view}
+                    key={article.id}
+                  />
+                ))
+              )}
             </div>
           )}
         </WindowScroller>

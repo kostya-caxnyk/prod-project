@@ -63,6 +63,7 @@ export const Page = memo((props: PageProps) => {
         onScroll={onScroll}
         ref={wrapperRef}
         className={classNames(cls.page, className)}
+        id="page-id"
       >
         {children}
         <div ref={triggerRef} className={cls.trigger} />

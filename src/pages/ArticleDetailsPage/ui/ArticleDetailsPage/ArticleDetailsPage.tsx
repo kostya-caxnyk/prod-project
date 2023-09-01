@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { useTranslation } from 'react-i18next'
 import { ArticleDetails } from 'entities/Article'
 import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
 import { Page } from 'widgets/Page/Page'
@@ -11,7 +10,6 @@ import { useParams } from 'react-router-dom'
 import { VStack } from 'shared/ui/Stack'
 
 const ArticleDetailsPage = memo(() => {
-  const { t } = useTranslation()
   const { id } = useParams<{ id: string }>()
   useDynamicModuleLoader('articleDetailsPage', articleDetailsPageReducer)
 
