@@ -34,6 +34,10 @@ export function Navbar({ className }: NavbarProps) {
             direction="bottom left"
             items={[
               {
+                content: t('Admin panel'),
+                href: RoutePaths.admin_panel
+              },
+              {
                 content: t('Profile'),
                 href: generatePath(RoutePaths.profile, { id: user.id })
               },

@@ -30,7 +30,7 @@ export function Dropdown(props: DropdownProps) {
   const { className, trigger, items, direction = 'bottom right' } = props
 
   return (
-    <Menu as="div" className={classNames(cls.Dropdown, {}, [className])}>
+    <Menu as="div" className={classNames(cls.Dropdown, className)}>
       <Menu.Button className={cls.btn}>{trigger}</Menu.Button>
       <Menu.Items
         className={classNames(cls.menu, mapDirectionClass[direction])}
