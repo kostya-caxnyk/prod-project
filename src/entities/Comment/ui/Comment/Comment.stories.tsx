@@ -2,6 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { CommentItem } from './Comment'
+import { UserRole } from 'entities/User'
 
 export default {
   title: 'entities/Comment/CommentItem',
@@ -20,6 +21,6 @@ Normal.args = {
   comment: {
     id: '1',
     text: 'hello world',
-    user: { id: '1', username: 'Vasya' }
+    user: { id: '1', username: 'Vasya', roles: [UserRole.USER] }
   }
 }

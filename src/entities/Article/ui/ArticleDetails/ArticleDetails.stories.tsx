@@ -2,15 +2,12 @@ import React from 'react'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 
 import { Article } from '../..'
-import {
-  ArticleBlockType,
-  ArticleType
-} from '../../model/types/article'
+import { ArticleBlockType, ArticleType } from '../../model/types/article'
 import { ArticleDetails } from './ArticleDetails'
 import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
 
 export default {
-  title: 'entities/ArticleDetails',
+  title: 'entities/Article/ArticleDetails',
   component: ArticleDetails,
   argTypes: {
     backgroundColor: { control: 'color' }
@@ -29,7 +26,7 @@ const article: Article = {
   views: 1022,
   createdAt: '26.02.2022',
   type: [ArticleType.IT],
-  user: { id: '1', avatar: '', username: 'Kostya' },
+  user: { id: '1', avatar: '', username: 'Kostya', roles: [] },
   blocks: [
     {
       id: '1',

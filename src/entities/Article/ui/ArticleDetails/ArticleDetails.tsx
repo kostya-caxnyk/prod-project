@@ -26,7 +26,7 @@ import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicMod
 import { articleDetailsReducer } from '../../model/slice/articleSlice'
 
 interface ArticleDetailsProps {
-  id: string
+  id?: string
 }
 
 export const ArticleDetails = memo(({ id }: ArticleDetailsProps) => {

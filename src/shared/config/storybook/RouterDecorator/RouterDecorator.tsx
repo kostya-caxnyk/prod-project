@@ -1,9 +1,11 @@
-import { type Story } from '@storybook/react'
+import { Story } from '@storybook/react'
 import { Suspense } from 'react'
 import { BrowserRouter } from 'react-router-dom'
 
-export const RouterDecorator = (story: () => Story) => (
+export const RouterDecorator = (StoryComponent: Story) => (
   <Suspense fallback="">
-    <BrowserRouter>{story()}</BrowserRouter>
+    <BrowserRouter>
+      <StoryComponent />
+    </BrowserRouter>
   </Suspense>
 )

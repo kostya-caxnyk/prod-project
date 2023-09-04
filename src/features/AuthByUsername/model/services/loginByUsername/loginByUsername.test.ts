@@ -3,7 +3,7 @@ import { type User, userActions } from 'entities/User'
 import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 
 describe('loginByUsername.test', () => {
-  const userData: User = { username: 'kostya', id: '1' }
+  const userData: User = { username: 'kostya', id: '1', roles: [] }
 
   test('success login', async () => {
     const thunk = new TestAsyncThunk(loginByUsername)

@@ -82,6 +82,7 @@ export const ArticleList = memo(
             registerChild
           }) => (
             <div
+              // @ts-expect-error 123
               ref={registerChild}
               className={classNames(cls.articleList, className)}
             >

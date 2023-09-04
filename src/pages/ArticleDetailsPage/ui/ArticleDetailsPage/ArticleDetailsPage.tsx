@@ -17,9 +17,9 @@ const ArticleDetailsPage = memo(() => {
     <Page>
       <VStack gap="16" max>
         <ArticleDetailsPageHeader />
-        {id && <ArticleDetails id={id} />}
+        <ArticleDetails id={id} />
         <ArticleRecommendationsList />
-        <ArticleDetailsComments />
+        <ArticleDetailsComments id={id} />
       </VStack>
     </Page>
   )
