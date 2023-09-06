@@ -5,12 +5,6 @@ import { buildCssLoader } from './loaders/buildCssLoader'
 import { buildBabelLoader } from './loaders/buildBabelLoader'
 
 export default (options: BuildOptions): webpack.RuleSetRule[] => {
-  const typescriptLoader = {
-    test: /\.tsx?$/,
-    use: 'ts-loader',
-    exclude: /node_modules/
-  }
-
   const svgLoader = {
     test: /\.svg$/i,
     issuer: /\.[jt]sx?$/,
@@ -26,5 +20,5 @@ export default (options: BuildOptions): webpack.RuleSetRule[] => {
     ]
   }
 
-  return [buildBabelLoader(), typescriptLoader, buildCssLoader(options.isDev), svgLoader, fileLoader]
+  return [buildBabelLoader(), buildCssLoader(options.isDev), svgLoader, fileLoader]
 }

@@ -4,7 +4,6 @@ import { type ComponentStory } from '@storybook/react'
 import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
 import { Theme } from 'app/providers/ThemeProvider'
 import { ArticleRecommendationsList } from './ArticleRecommendationsList'
-import withMock from 'storybook-addon-mock'
 import { Article } from 'entities/Article'
 
 export default {
@@ -12,8 +11,7 @@ export default {
   component: ArticleRecommendationsList,
   argTypes: {
     backgroundColor: { control: 'color' }
-  },
-  decorators: [withMock]
+  }
 }
 
 const article = {
@@ -33,6 +31,7 @@ const article = {
 const Template: ComponentStory<typeof ArticleRecommendationsList> = (args) => <ArticleRecommendationsList />
 
 export const Primary = Template.bind({})
+
 Primary.parameters = {
   mockData: [
     {
