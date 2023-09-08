@@ -2,6 +2,7 @@ declare namespace NavbarModuleScssNamespace {
   export interface INavbarModuleScss {
     links: string;
     navbar: string;
+    notifications: string;
   }
 }
 

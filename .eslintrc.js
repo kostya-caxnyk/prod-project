@@ -47,7 +47,8 @@ module.exports = {
           'target',
           'direction',
           'align',
-          'as'
+          'as',
+          'border'
         ]
       }
     ],

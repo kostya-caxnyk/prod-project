@@ -1,14 +1,7 @@
 declare namespace ListBoxModuleScssNamespace {
   export interface IListBoxModuleScss {
-    ListBox: string;
-    active: string;
-    disabled: string;
     item: string;
     options: string;
-    optionsBottomLeft: string;
-    optionsBottomRight: string;
-    optionsTopLeft: string;
-    optionsTopRight: string;
     trigger: string;
   }
 }

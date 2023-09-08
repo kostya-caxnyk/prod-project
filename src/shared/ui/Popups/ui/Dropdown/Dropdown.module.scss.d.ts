@@ -1,14 +1,7 @@
 declare namespace DropdownModuleScssNamespace {
   export interface IDropdownModuleScss {
-    Dropdown: string;
-    active: string;
-    btn: string;
     item: string;
     menu: string;
-    optionsBottomLeft: string;
-    optionsBottomRight: string;
-    optionsTopLeft: string;
-    optionsTopRight: string;
   }
 }
 
