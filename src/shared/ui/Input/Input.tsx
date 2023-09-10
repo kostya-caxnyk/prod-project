@@ -1,7 +1,7 @@
 import React, { type InputHTMLAttributes, memo, type ChangeEvent, useEffect, useRef } from 'react'
 
 import cls from './Input.module.scss'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames } from '@/shared/lib/classNames/classNames'
 
 interface InputProps<Name>
   extends Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'name'> {

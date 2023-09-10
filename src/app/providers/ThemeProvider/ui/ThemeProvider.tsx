@@ -3,7 +3,7 @@ import {
   LOCAL_STORAGE_THEME_KEY,
   Theme,
   themeContext
-} from 'app/providers/ThemeProvider/lib/ThemeContext'
+} from '@/app/providers/ThemeProvider/lib/ThemeContext'
 
 interface ThemeProviderProps {
   initialTheme?: Theme

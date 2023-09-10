@@ -1,10 +1,10 @@
 import React from 'react'
 import { type ComponentStory } from '@storybook/react'
 
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
 import { ArticleRecommendationsList } from './ArticleRecommendationsList'
-import { Article } from 'entities/Article'
+import { Article } from '@/entities/Article'
 
 export default {
   title: 'features/ArticleRecommendationsList',

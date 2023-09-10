@@ -1,4 +1,4 @@
-import { Country } from 'entities/Country'
+import { Country } from '@/entities/Country'
 import { profileActions, profileReducer } from './profileSlice'
 import { ProfileSchema } from '../types/profile'
 

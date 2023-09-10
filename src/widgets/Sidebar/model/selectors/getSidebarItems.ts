@@ -1,12 +1,12 @@
-import { StateSchema } from 'app/providers/StoreProvider'
-import { getUserAuthData } from 'entities/User'
+import { StateSchema } from '@/app/providers/StoreProvider'
+import { getUserAuthData } from '@/entities/User'
 
-import { RoutePaths } from 'shared/config/routeConfig/routeConfig'
-import AboutIcon from 'shared/assets/icons/about.svg'
-import ProfileIcon from 'shared/assets/icons/profile.svg'
-import ArticlesIcon from 'shared/assets/icons/articles.svg'
-import HomeIcon from 'shared/assets/icons/home.svg'
-import i18n from 'shared/config/i18n/i18n'
+import { RoutePaths } from '@/shared/config/routeConfig/routeConfig'
+import AboutIcon from '@/shared/assets/icons/about.svg'
+import ProfileIcon from '@/shared/assets/icons/profile.svg'
+import ArticlesIcon from '@/shared/assets/icons/articles.svg'
+import HomeIcon from '@/shared/assets/icons/home.svg'
+import i18n from '@/shared/config/i18n/i18n'
 import { generatePath } from 'react-router-dom'
 
 export interface SidebarLinkType {

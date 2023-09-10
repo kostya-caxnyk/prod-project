@@ -36,7 +36,6 @@
     "@preact/preset-vite": "^2.5.0",
     "@storybook/addon-actions": "^6.4.19",
     "@storybook/addon-essentials": "^6.4.19",
-    "@storybook/addon-interactions": "^6.4.19",
     "@storybook/addon-links": "^6.4.19",
     "@storybook/builder-webpack5": "^6.4.19",
     "@storybook/manager-webpack5": "^6.4.19",
@@ -52,7 +51,8 @@
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
     "@types/react-router-dom": "^5.3.3",
-    "@types/react-virtualized": "^9.21.22",
+    "@types/react-virtualized-auto-sizer": "^1.0.1",
+    "@types/react-window": "^1.8.5",
     "@types/webpack": "^5.28.0",
     "@types/webpack-bundle-analyzer": "^4.4.1",
     "@types/webpack-dev-server": "^4.7.2",
@@ -89,6 +89,7 @@
     "stylelint": "^14.5.3",
     "stylelint-config-standard-scss": "^3.0.0",
     "ts-loader": "^9.2.6",
+    "ts-morph": "^19.0.0",
     "ts-node": "^10.5.0",
     "typescript": "^4.5.5",
     "vite": "^4.4.9",
@@ -112,7 +113,8 @@
     "react-i18next": "^11.15.5",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.2.1",
-    "react-virtualized": "^9.22.3"
+    "react-virtualized-auto-sizer": "^1.0.20",
+    "react-window": "^1.8.9"
   },
   "loki": {
     "configurations": {

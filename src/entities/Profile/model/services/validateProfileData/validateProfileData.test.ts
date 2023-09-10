@@ -1,5 +1,5 @@
 import { validateProfileData } from './validateProfileData'
-import { Country } from 'entities/Country'
+import { Country } from '@/entities/Country'
 import { Profile, ValidationProfileError } from '../../types/profile'
 
 describe('fetch profile data test', () => {

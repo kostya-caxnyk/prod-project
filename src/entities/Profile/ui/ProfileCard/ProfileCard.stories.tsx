@@ -1,12 +1,12 @@
 import { type ComponentStory } from '@storybook/react'
 
 import { ProfileCard } from './ProfileCard'
-import { ThemeDecorator } from 'shared/config/storybook/ThemeDecorator/ThemeDecorator'
-import { Theme } from 'app/providers/ThemeProvider'
-import { StoreDecorator } from 'shared/config/storybook/StoreDecorator/StoreDecorator'
-import { Country } from 'entities/Country'
-import { Currency } from 'entities/Currency'
-import avatar from 'shared/assets/tests/storybook.jpg'
+import { ThemeDecorator } from '@/shared/config/storybook/ThemeDecorator/ThemeDecorator'
+import { Theme } from '@/app/providers/ThemeProvider'
+import { StoreDecorator } from '@/shared/config/storybook/StoreDecorator/StoreDecorator'
+import { Country } from '@/entities/Country'
+import { Currency } from '@/entities/Currency'
+import avatar from '@/shared/assets/tests/storybook.jpg'
 
 export default {
   title: 'entities/ProfileCard',

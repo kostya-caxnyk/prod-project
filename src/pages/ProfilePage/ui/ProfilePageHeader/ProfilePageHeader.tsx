@@ -2,17 +2,17 @@ import React, { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cls from './ProfilePageHeader.module.scss'
-import { Text } from 'shared/ui/Text/Text'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
+import { Text } from '@/shared/ui/Text/Text'
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button'
 import { useSelector } from 'react-redux'
 import {
   getProfileData,
   getProfileReadonly,
   profileActions,
   saveProfileData
-} from 'entities/Profile'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
-import { getUserAuthData } from 'entities/User'
+} from '@/entities/Profile'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { getUserAuthData } from '@/entities/User'
 
 export const ProfilePageHeader = memo(() => {
   const { t } = useTranslation()

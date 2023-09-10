@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react'
 import { useRoutes } from 'react-router-dom'
-import { routes } from 'shared/config/routeConfig/routeConfig'
-import { PageLoader } from 'widgets/PageLoader'
+import { routes } from '@/shared/config/routeConfig/routeConfig'
+import { PageLoader } from '@/widgets/PageLoader'
 import { RequireAuth } from './RequireAuth'
 import { RequireRole } from './RequireRole'
 

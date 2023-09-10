@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { useTheme, Theme } from 'app/providers/ThemeProvider'
+import { useTheme, Theme } from '@/app/providers/ThemeProvider'
 
-import Icon from 'shared/assets/icons/cloud-moon.svg'
-import { Button } from 'shared/ui/Button/Button'
+import Icon from '@/shared/assets/icons/cloud-moon.svg'
+import { Button } from '@/shared/ui/Button/Button'
 
 interface ThemeSwitcherProps {
   className?: string

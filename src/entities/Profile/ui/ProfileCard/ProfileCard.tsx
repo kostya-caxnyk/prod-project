@@ -2,14 +2,14 @@ import React, { memo, useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cls from './ProfileCard.module.scss'
-import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text'
-import { Input } from 'shared/ui/Input/Input'
+import { Text, TextAlign, TextTheme } from '@/shared/ui/Text/Text'
+import { Input } from '@/shared/ui/Input/Input'
 import { Profile } from '../..'
-import { Loader } from 'shared/ui/Loader/Loader'
-import { Avatar } from 'shared/ui/Avatar/Avatar'
-import { Country, CountrySelect } from 'entities/Country'
-import { Currency, CurrencySelect } from 'entities/Currency'
-import { classNames } from 'shared/lib/classNames/classNames'
+import { Loader } from '@/shared/ui/Loader/Loader'
+import { Avatar } from '@/shared/ui/Avatar/Avatar'
+import { Country, CountrySelect } from '@/entities/Country'
+import { Currency, CurrencySelect } from '@/entities/Currency'
+import { classNames } from '@/shared/lib/classNames/classNames'
 
 interface ProfileCardProps {
   data?: Profile

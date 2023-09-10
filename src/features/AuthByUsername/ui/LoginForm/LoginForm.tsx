@@ -2,9 +2,9 @@ import React, { useCallback } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cls from './LoginForm.module.scss'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { Button, ButtonTheme } from 'shared/ui/Button/Button'
-import { Input } from 'shared/ui/Input/Input'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { Button, ButtonTheme } from '@/shared/ui/Button/Button'
+import { Input } from '@/shared/ui/Input/Input'
 import { useSelector } from 'react-redux'
 import {
   loginActions,
@@ -12,9 +12,9 @@ import {
 } from '../../model/slice/loginSlice'
 import { getLoginState } from '../../model/selectors/getLoginState/getLoginState'
 import { loginByUsername } from '../../model/services/loginByUsername/loginByUsername'
-import { Text, TextTheme } from 'shared/ui/Text/Text'
-import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { Text, TextTheme } from '@/shared/ui/Text/Text'
+import { useDynamicModuleLoader } from '@/shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 
 export default function LoginForm({ onSuccess }: { onSuccess: () => void }) {
   const { t } = useTranslation()

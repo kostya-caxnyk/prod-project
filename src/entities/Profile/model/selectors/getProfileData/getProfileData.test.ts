@@ -1,6 +1,6 @@
-import { type StateSchema } from 'app/providers/StoreProvider/config/StateSchema'
+import { type StateSchema } from '@/app/providers/StoreProvider/config/StateSchema'
 import { getProfileData } from './getProfileData'
-import { Country } from 'entities/Country'
+import { Country } from '@/entities/Country'
 import { Profile } from '../../types/profile'
 
 describe('getProfileData test', () => {

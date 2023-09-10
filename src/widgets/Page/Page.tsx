@@ -1,4 +1,4 @@
-import { classNames } from 'shared/lib/classNames/classNames'
+import { classNames } from '@/shared/lib/classNames/classNames'
 import {
   createContext,
   memo,
@@ -8,17 +8,17 @@ import {
   useEffect,
   useRef
 } from 'react'
-import { useInfiniteScroll } from 'shared/lib/hooks/useInfiniteScroll/useInfiniteScroll'
+import { useInfiniteScroll } from '@/shared/lib/hooks/useInfiniteScroll/useInfiniteScroll'
 import cls from './Page.module.scss'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import {
   getScrollPositionByPath,
   scrollRestorationActions
-} from 'features/ScrollRestoration'
+} from '@/features/ScrollRestoration'
 import { useLocation } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { StateSchema } from 'app/providers/StoreProvider'
-import { useThrottle } from 'shared/lib/hooks/useThrottle/useThrottle'
+import { StateSchema } from '@/app/providers/StoreProvider'
+import { useThrottle } from '@/shared/lib/hooks/useThrottle/useThrottle'
 
 interface PageProps {
   className?: string

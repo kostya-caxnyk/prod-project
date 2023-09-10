@@ -1,15 +1,15 @@
 import { useTranslation } from 'react-i18next'
 import { memo, useContext } from 'react'
 import { useSelector } from 'react-redux'
-import { ArticleList } from 'entities/Article'
-import { Text } from 'shared/ui/Text/Text'
+import { ArticleList } from '@/entities/Article'
+import { Text } from '@/shared/ui/Text/Text'
 import { getArticles } from '../../model/slice/articlePageSlice'
 import {
   getArticlesPageError,
   getArticlesPageLoading,
   getArticlesPageView
 } from '../../model/selectors/articlesPageSelectors'
-import { pageContext } from 'widgets/Page/Page'
+import { pageContext } from '@/widgets/Page/Page'
 
 interface ArticleInfiniteListProps {
   className?: string

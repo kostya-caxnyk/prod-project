@@ -1,8 +1,8 @@
-import { renderComponent } from 'shared/lib/tests/renderComponent'
+import { renderComponent } from '@/shared/lib/tests/renderComponent'
 import ProfilePage from './ui/ProfilePage'
-import { Currency } from 'entities/Currency'
-import { Country } from 'entities/Country'
-import { Profile, profileReducer } from 'entities/Profile'
+import { Currency } from '@/entities/Currency'
+import { Country } from '@/entities/Country'
+import { Profile, profileReducer } from '@/entities/Profile'
 import userEvent from '@testing-library/user-event'
 import { screen } from '@testing-library/react'
 

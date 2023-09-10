@@ -2,8 +2,8 @@ import React, { memo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import cls from './Comment.module.scss'
-import { classNames } from 'shared/lib/classNames/classNames'
-import { Skeleton } from 'shared/ui/Skeleton/Skeleton'
+import { classNames } from '@/shared/lib/classNames/classNames'
+import { Skeleton } from '@/shared/ui/Skeleton/Skeleton'
 
 export const CommentSkeleton = memo(() => {
   const { t } = useTranslation()

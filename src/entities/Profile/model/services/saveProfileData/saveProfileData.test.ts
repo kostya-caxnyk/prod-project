@@ -1,6 +1,6 @@
-import { TestAsyncThunk } from 'shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
+import { TestAsyncThunk } from '@/shared/lib/tests/TestAsyncThunk/TestAsyncThunk'
 import { saveProfileData } from './saveProfileData'
-import { Country } from 'entities/Country'
+import { Country } from '@/entities/Country'
 import { Profile, ValidationProfileError } from '../../types/profile'
 
 describe('save profile data test', () => {

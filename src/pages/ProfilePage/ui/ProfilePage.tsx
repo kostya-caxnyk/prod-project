@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useEffect } from 'react'
 import cls from './ProfilePage.module.scss'
-import { useDynamicModuleLoader } from 'shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
+import { useDynamicModuleLoader } from '@/shared/lib/hooks/useToggle/useDynamicModuleLoader/useDynamicModuleLoader'
 import {
   fetchProfileData,
   profileReducer,
@@ -13,15 +13,15 @@ import {
   getProfileReadonly,
   getProfileValidationErrors,
   ValidationProfileError
-} from 'entities/Profile'
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch'
+} from '@/entities/Profile'
+import { useAppDispatch } from '@/shared/lib/hooks/useAppDispatch/useAppDispatch'
 import { useSelector } from 'react-redux'
 import { ProfilePageHeader } from './ProfilePageHeader/ProfilePageHeader'
-import { Text, TextTheme } from 'shared/ui/Text/Text'
+import { Text, TextTheme } from '@/shared/ui/Text/Text'
 import { useTranslation } from 'react-i18next'
-import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect'
+import { useInitialEffect } from '@/shared/lib/hooks/useInitialEffect/useInitialEffect'
 import { useParams } from 'react-router-dom'
-import { Page } from 'widgets/Page/Page'
+import { Page } from '@/widgets/Page/Page'
 
 const ProfilePage = () => {
   useDynamicModuleLoader('profile', profileReducer)

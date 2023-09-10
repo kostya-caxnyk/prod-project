@@ -2,7 +2,7 @@ import React from 'react'
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 
 import { CommentItem } from './Comment'
-import { UserRole } from 'entities/User'
+import { UserRole } from '@/entities/User'
 
 export default {
   title: 'entities/Comment/CommentItem',
