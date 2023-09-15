@@ -1,6 +1,7 @@
 declare namespace CardModuleScssNamespace {
   export interface ICardModuleScss {
     card: string;
+    fullWidth: string;
     normal: string;
     outlined: string;
   }

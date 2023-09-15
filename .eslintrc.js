@@ -26,7 +26,7 @@ module.exports = {
   },
   plugins: ['custom-rules', 'react', 'i18next', 'react-hooks'],
   rules: {
-    'custom-rules/path-checker': 'error',
+    'custom-rules/path-checker': ['error', { alias: '@' }],
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/prefer-nullish-coalescing': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',

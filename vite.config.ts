@@ -20,28 +20,8 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: 'shared',
-        replacement: '/src/shared'
-      },
-      {
-        find: 'app',
-        replacement: '/src/app'
-      },
-      {
-        find: 'widgets',
-        replacement: '/src/widgets'
-      },
-      {
-        find: 'entities',
-        replacement: '/src/entities'
-      },
-      {
-        find: 'pages',
-        replacement: '/src/pages'
-      },
-      {
-        find: 'features',
-        replacement: '/src/features'
+        find: '@',
+        replacement: '/src'
       }
     ]
   }

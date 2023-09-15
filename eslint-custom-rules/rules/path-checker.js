@@ -2,7 +2,6 @@
 'use strict'
 
 const path = require('path')
-const { isPathRelative } = require('../helpers')
 
 module.exports = {
   meta: {
@@ -31,46 +30,27 @@ module.exports = {
 
     return {
       ImportDeclaration(node) {
-        try {
-          // example app/entities/Article
-          const value = node.source.value
-          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-          const importTo = alias ? value.replace(`${alias}/`, '') : value
+        // example app/entities/Article
+        const value = node.source.value
+        // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+        const importTo = alias ? value.replace(`${alias}/`, '') : value
 
-          // example C:\Users\tim\Desktop\javascript\production_project\src\entities\Article
-          const fromFilename = context.getFilename()
+        // example C:\Users\tim\Desktop\javascript\production_project\src\entities\Article
+        const fromFilename = context.getFilename()
 
-          if (shouldBeRelative(fromFilename, importTo)) {
-            context.report({
-              node,
-              message: 'Within a single slice, all paths must be relative.',
-              fix: (fixer) => {
-                const normalizedPath = getNormalizedCurrentFilePath(
-                  fromFilename
-                ) // /entities/Article/Article.tsx
-                  .split('/')
-                  .slice(0, -1)
-                  .join('/')
-                let relativePath = path
-                  // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-                  .relative(normalizedPath, `/${importTo}`)
-                  .split('\\')
-                  .join('/')
-
-                if (!relativePath.startsWith('.')) {
-                  relativePath = './' + relativePath
-                }
-
-                return fixer.replaceText(node.source, `'${relativePath}'`)
-              }
-            })
-          }
-        } catch (e) {
-          console.log(e)
+        if (shouldBeRelative(fromFilename, importTo)) {
+          context.report(
+            node,
+            'Within a single slice, all paths must be relative.'
+          )
         }
       }
     }
   }
+}
+
+function isPathRelative(path) {
+  return path === '.' || path.startsWith('./') || path.startsWith('../')
 }
 
 const layers = {
@@ -79,12 +59,6 @@ const layers = {
   shared: 'shared',
   pages: 'pages',
   widgets: 'widgets'
-}
-
-function getNormalizedCurrentFilePath(currentFilePath) {
-  const normalizedPath = path.toNamespacedPath(currentFilePath)
-  const projectFrom = normalizedPath.split('src')[1]
-  return projectFrom.split('\\').join('/')
 }
 
 function shouldBeRelative(from, to) {
@@ -101,8 +75,9 @@ function shouldBeRelative(from, to) {
     return false
   }
 
-  const projectFrom = getNormalizedCurrentFilePath(from)
-  const fromArray = projectFrom.split('/')
+  const normalizedPath = path.toNamespacedPath(from)
+  const projectFrom = normalizedPath.split('src')[1]
+  const fromArray = projectFrom.split('\\')
 
   const fromLayer = fromArray[1]
   const fromSlice = fromArray[2]

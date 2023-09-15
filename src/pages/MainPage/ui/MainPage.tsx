@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 function MainPage() {

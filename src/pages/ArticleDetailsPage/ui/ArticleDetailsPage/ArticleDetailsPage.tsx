@@ -8,16 +8,22 @@ import { ArticleRecommendationsList } from '@/features/ArticleRecommendationsLis
 import { ArticleDetailsComments } from '../ArticleDetailsComments/ArticleDetailsComments'
 import { useParams } from 'react-router-dom'
 import { VStack } from '@/shared/ui/Stack'
+import { ArticleRating } from '@/features/ArticleRating'
 
 const ArticleDetailsPage = memo(() => {
   const { id } = useParams<{ id: string }>()
   useDynamicModuleLoader('articleDetailsPage', articleDetailsPageReducer)
+
+  if (!id) {
+    return null
+  }
 
   return (
     <Page>
       <VStack gap="16" max>
         <ArticleDetailsPageHeader />
         <ArticleDetails id={id} />
+        <ArticleRating articleId={id} />
         <ArticleRecommendationsList />
         <ArticleDetailsComments id={id} />
       </VStack>
